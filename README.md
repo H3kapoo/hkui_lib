@@ -26,6 +26,9 @@ MSVC support does not currently exist and Windows version has been created with 
 ```
 
 If you have **gitbash** installed, the build.sh from Linux can be ran as well.
+
+---
+
 Before building, make sure you **fill all** the necessary locations for the include/lib dependencies:
 
 ```bash
