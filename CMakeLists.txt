@@ -12,12 +12,10 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
     # Deps include path
     set(FT_LIBRARY_INCLUDE_DIRECTORY "/home/hekapoo/Downloads/freeType2/freetype-2.13.1/include/")
-    set(LZMA_LIBRARY_INCLUDE_DIRECTORY "/home/hekapoo/Downloads/xz-5.4.5/src/liblzma/")
     set(GLEW_LIBRARY_INCLUDE_DIRECTORY "/home/hekapoo/Downloads/glew-2.1.0/include")
     set(GLFW_LIBRARY_INCLUDE_DIRECTORY "/home/hekapoo/Downloads/glfw-3.3.8/include")
     
     include_directories (${FT_LIBRARY_INCLUDE_DIRECTORY})
-    include_directories (${LZMA_LIBRARY_INCLUDE_DIRECTORY})
     include_directories (${GLEW_LIBRARY_INCLUDE_DIRECTORY})
     include_directories (${GLFW_LIBRARY_INCLUDE_DIRECTORY})
 
@@ -37,10 +35,18 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     add_subdirectory(src/utils)
     add_subdirectory(src/textHelpers)
 
+    set(FT_LIBRARY_PATH_DIRECTORY "/home/hekapoo/Downloads/freeType2/freetype-2.13.1/objs/.libs")
+    set(GLEW_LIBRARY_PATH_DIRECTORY "/home/hekapoo/Downloads/glew-2.1.0/lib")
+    set(GLFW_LIBRARY_PATH_DIRECTORY "/home/hekapoo/Downloads/glfw-3.3.8/src")
 
-    target_link_options(${PROJECT_NAME} PRIVATE -static-libstdc++ -static-libgcc)
+    target_link_directories(${PROJECT_NAME} PRIVATE
+        ${GLEW_LIBRARY_PATH_DIRECTORY}        # Path to the directory containing GLEW library file
+        ${GLFW_LIBRARY_PATH_DIRECTORY}        # Path to the directory containing GLFW library file
+        ${FT_LIBRARY_PATH_DIRECTORY}          # Path to the directory containing FreeType library file
+        ${LZMA_LIBRARY_PATH_DIRECTORY}        # Path to the directory containing LZMA library file
+    )
 
-    target_link_libraries(${PROJECT_NAME} glfw3 GLEW GL X11 pthread Xrandr dl png16 freetype elzip lzma)
+    target_link_libraries(${PROJECT_NAME} glfw3 GLEW GL X11 pthread Xrandr dl freetype)
 
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     # Windows-specific code or configuration here
@@ -50,12 +56,10 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 
     # Deps include path
     set(FT_LIBRARY_INCLUDE_DIRECTORY "C:/Users/boje/Desktop/helperz/cpp/deps/glew_source/glew-2.1.0/include")
-    set(LZMA_LIBRARY_INCLUDE_DIRECTORY "C:/Users/boje/Desktop/helperz/cpp/deps/glfw-3.3.8.bin.WIN64/include")
     set(GLEW_LIBRARY_INCLUDE_DIRECTORY "C:/Users/boje/Desktop/helperz/cpp/deps/lzma/include")
     set(GLFW_LIBRARY_INCLUDE_DIRECTORY "C:/Users/boje/Desktop/helperz/cpp/deps/freetype-2.13.2/include")
 
     include_directories (${FT_LIBRARY_INCLUDE_DIRECTORY})
-    include_directories (${LZMA_LIBRARY_INCLUDE_DIRECTORY})
     include_directories (${GLEW_LIBRARY_INCLUDE_DIRECTORY})
     include_directories (${GLFW_LIBRARY_INCLUDE_DIRECTORY})
     
@@ -79,14 +83,12 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     # Deps lib path
     set(GLEW_LIBRARY_PATH_DIRECTORY "C:/Users/boje/Desktop/helperz/cpp/deps/glew_source/glew-2.1.0/build/cmake/build/lib")
     set(GLFW_LIBRARY_PATH_DIRECTORY "C:/Users/boje/Desktop/helperz/cpp/deps/glfw-3.3.8.bin.WIN64/lib-mingw-w64")
-    set(LZMA_LIBRARY_PATH_DIRECTORY "C:/Users/boje/Desktop/helperz/cpp/deps/lzma/bin_x86-64")
     set(FT_LIBRARY_PATH_DIRECTORY "C:/Users/boje/Desktop/helperz/cpp/deps/freetype-2.13.2/build")
 
     target_link_directories(${PROJECT_NAME} PRIVATE
         ${GLEW_LIBRARY_PATH_DIRECTORY}        # Path to the directory containing GLEW library file
         ${GLFW_LIBRARY_PATH_DIRECTORY}        # Path to the directory containing GLFW library file
         ${FT_LIBRARY_PATH_DIRECTORY}          # Path to the directory containing FreeType library file
-        ${LZMA_LIBRARY_PATH_DIRECTORY}        # Path to the directory containing LZMA library file
     )
 
     # There is a problem with statically linking stdlibc++ and libgcc on mingw with c++23
