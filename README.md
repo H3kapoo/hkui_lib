@@ -45,4 +45,4 @@ Before building, make sure you **fill all** the necessary locations for the incl
     set(GLFW_LIBRARY_PATH_DIRECTORY "path to lib of glfw")    
 ```
 
-To link, simply add ```-lhkui``` to your project link libraries.
+To link, simply add ```-lhkui``` and also link with ```freetype``` ```GLEW``` and ```glfw``` to your project link libraries.
