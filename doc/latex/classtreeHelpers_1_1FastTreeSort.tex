@@ -1,0 +1,70 @@
+\hypertarget{classtreeHelpers_1_1FastTreeSort}{}\doxysection{tree\+Helpers\+::Fast\+Tree\+Sort Class Reference}
+\label{classtreeHelpers_1_1FastTreeSort}\index{treeHelpers::FastTreeSort@{treeHelpers::FastTreeSort}}
+
+
+Class used to speed-\/up searches in the default \mbox{\hyperlink{classtreeHelpers_1_1TreeStruct}{Tree\+Struct}}.  
+
+
+
+
+{\ttfamily \#include $<$Fast\+Tree\+Sort.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC}{Rect\+Node\+ABC}} $\ast$ $>$ \& \mbox{\hyperlink{classtreeHelpers_1_1FastTreeSort_a2a672d29c8536be24ba9f9810fb81667}{get\+Buffer}} ()
+\begin{DoxyCompactList}\small\item\em Get a reference to the internal fast tree buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classtreeHelpers_1_1FastTreeSort_a9c0b425bc7bfcf59d45a88d4e1b8f86c}{sort\+Buffer}} (\mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC}{Rect\+Node\+ABC}} $\ast$root, const std\+::function$<$ bool(const \mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC}{Rect\+Node\+ABC}} $\ast$x, const \mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC}{Rect\+Node\+ABC}} $\ast$y)$>$ sort\+Func)
+\begin{DoxyCompactList}\small\item\em Populate and sort the internal buffer based on the tree starting at the provided {\bfseries{root}} node and supplied {\bfseries{sort\+Func}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class used to speed-\/up searches in the default \mbox{\hyperlink{classtreeHelpers_1_1TreeStruct}{Tree\+Struct}}. 
+
+Speeds up tree searching by flattening and sorting the tree into an array according to the supplied function inside {\bfseries{sort\+Buffer}}. Internal flat vector needs to be manually asked to sort itself, it doesn\textquotesingle{}t do that autonomously to allow user to also sort tree in batches. It is recommended to ask for resorting after each single/bached node addition/removal in order to avoid UB.
+
+\begin{DoxyNote}{Note}
+This should really only be instantiated on the {\bfseries{Root}} node of the tree. 
+\end{DoxyNote}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classtreeHelpers_1_1FastTreeSort_a2a672d29c8536be24ba9f9810fb81667}\label{classtreeHelpers_1_1FastTreeSort_a2a672d29c8536be24ba9f9810fb81667}} 
+\index{treeHelpers::FastTreeSort@{treeHelpers::FastTreeSort}!getBuffer@{getBuffer}}
+\index{getBuffer@{getBuffer}!treeHelpers::FastTreeSort@{treeHelpers::FastTreeSort}}
+\doxysubsubsection{\texorpdfstring{getBuffer()}{getBuffer()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC}{Rect\+Node\+ABC}} $\ast$ $>$ \& tree\+Helpers\+::\+Fast\+Tree\+Sort\+::get\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get a reference to the internal fast tree buffer. 
+
+\begin{DoxyNote}{Note}
+This doesn\textquotesingle{}t call {\bfseries{sort\+Buffer}} internally, make sure you already called it beforehand if necessary.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Vector reference to the buffer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtreeHelpers_1_1FastTreeSort_a9c0b425bc7bfcf59d45a88d4e1b8f86c}\label{classtreeHelpers_1_1FastTreeSort_a9c0b425bc7bfcf59d45a88d4e1b8f86c}} 
+\index{treeHelpers::FastTreeSort@{treeHelpers::FastTreeSort}!sortBuffer@{sortBuffer}}
+\index{sortBuffer@{sortBuffer}!treeHelpers::FastTreeSort@{treeHelpers::FastTreeSort}}
+\doxysubsubsection{\texorpdfstring{sortBuffer()}{sortBuffer()}}
+{\footnotesize\ttfamily void tree\+Helpers\+::\+Fast\+Tree\+Sort\+::sort\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC}{Rect\+Node\+ABC}} $\ast$}]{root,  }\item[{const std\+::function$<$ bool(const \mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC}{Rect\+Node\+ABC}} $\ast$x, const \mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC}{Rect\+Node\+ABC}} $\ast$y)$>$}]{sort\+Func }\end{DoxyParamCaption})}
+
+
+
+Populate and sort the internal buffer based on the tree starting at the provided {\bfseries{root}} node and supplied {\bfseries{sort\+Func}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & Node to build buffer from. \\
+\hline
+{\em sort\+Func} & Function used to sort the internal buffer. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/hkui/tree\+Helpers/Fast\+Tree\+Sort.\+hpp\item 
+src/tree\+Helpers/Fast\+Tree\+Sort.\+cpp\end{DoxyCompactItemize}

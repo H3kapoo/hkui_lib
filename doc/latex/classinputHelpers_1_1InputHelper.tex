@@ -1,0 +1,139 @@
+\hypertarget{classinputHelpers_1_1InputHelper}{}\doxysection{input\+Helpers\+::Input\+Helper Class Reference}
+\label{classinputHelpers_1_1InputHelper}\index{inputHelpers::InputHelper@{inputHelpers::InputHelper}}
+
+
+Singleton class dealing with basic user input on a given window.  
+
+
+
+
+{\ttfamily \#include $<$Input\+Helper.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classinputHelpers_1_1InputHelper_a175cdf66f36cbcf081ea7cc8d68591d6}{observe}} (GLFWwindow $\ast$window)
+\begin{DoxyCompactList}\small\item\em Observe window and fire events accordingly. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classinputHelpers_1_1InputHelper_abdddf537e6e155d5ac69de1391f13f3e}{register\+On\+Key\+Action}} (const std\+::function$<$ void(int key, int scan\+Code, int action, int mods)$>$ callback)
+\begin{DoxyCompactList}\small\item\em Register callback to be called on window key action. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classinputHelpers_1_1InputHelper_ae6157da9c2eea07d713c7d5272d35c26}{register\+On\+Window\+Resize\+Action}} (const std\+::function$<$ void(int width, int height)$>$ callback)
+\begin{DoxyCompactList}\small\item\em Register callback to be called on window resize action. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classinputHelpers_1_1InputHelper_add6e4c8ac2985bca11c27a407c66626b}{register\+On\+Mouse\+Button\+Action}} (const std\+::function$<$ void(int button, int action, int mods)$>$ callback)
+\begin{DoxyCompactList}\small\item\em Register callback to be called on mouse button action. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classinputHelpers_1_1InputHelper_a59ace63c5586d456d73186322f40326c}{register\+On\+Mouse\+Move\+Action}} (const std\+::function$<$ void(double x\+Pos, double y\+Pos)$>$ callback)
+\begin{DoxyCompactList}\small\item\em Register callback to be called on mouse move action. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classinputHelpers_1_1InputHelper_a0a0dd19fe9f0fa743df7c4d649782885}\label{classinputHelpers_1_1InputHelper_a0a0dd19fe9f0fa743df7c4d649782885}} 
+void {\bfseries register\+On\+Mouse\+Drop\+Action} (const std\+::function$<$ void(double x\+Pos, double y\+Pos)$>$ callback)
+\item 
+void \mbox{\hyperlink{classinputHelpers_1_1InputHelper_a1d3fc3919b0839f79cad44ecb948742c}{register\+On\+Mouse\+Drop\+Action}} (const std\+::function$<$ void(double drop\+Count, const char $\ast$$\ast$paths)$>$ callback)
+\begin{DoxyCompactList}\small\item\em Register callback to be called on mouse drop action. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classinputHelpers_1_1InputHelper_adf35c26a1bf8aa191c896ee306b4e82f}\label{classinputHelpers_1_1InputHelper_adf35c26a1bf8aa191c896ee306b4e82f}} 
+static \mbox{\hyperlink{classinputHelpers_1_1InputHelper}{Input\+Helper}} \& {\bfseries get} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Singleton class dealing with basic user input on a given window. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classinputHelpers_1_1InputHelper_a175cdf66f36cbcf081ea7cc8d68591d6}\label{classinputHelpers_1_1InputHelper_a175cdf66f36cbcf081ea7cc8d68591d6}} 
+\index{inputHelpers::InputHelper@{inputHelpers::InputHelper}!observe@{observe}}
+\index{observe@{observe}!inputHelpers::InputHelper@{inputHelpers::InputHelper}}
+\doxysubsubsection{\texorpdfstring{observe()}{observe()}}
+{\footnotesize\ttfamily void input\+Helpers\+::\+Input\+Helper\+::observe (\begin{DoxyParamCaption}\item[{GLFWwindow $\ast$}]{window }\end{DoxyParamCaption})}
+
+
+
+Observe window and fire events accordingly. 
+
+It sets internal callback listeners for events such as mouse movement/window resize/etc that appear on the observed window. User has to {\bfseries{register}} callbacks for when those events fire.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & GLFW window to be observed. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classinputHelpers_1_1InputHelper_abdddf537e6e155d5ac69de1391f13f3e}\label{classinputHelpers_1_1InputHelper_abdddf537e6e155d5ac69de1391f13f3e}} 
+\index{inputHelpers::InputHelper@{inputHelpers::InputHelper}!registerOnKeyAction@{registerOnKeyAction}}
+\index{registerOnKeyAction@{registerOnKeyAction}!inputHelpers::InputHelper@{inputHelpers::InputHelper}}
+\doxysubsubsection{\texorpdfstring{registerOnKeyAction()}{registerOnKeyAction()}}
+{\footnotesize\ttfamily void input\+Helpers\+::\+Input\+Helper\+::register\+On\+Key\+Action (\begin{DoxyParamCaption}\item[{const std\+::function$<$ void(int key, int scan\+Code, int action, int mods)$>$}]{callback }\end{DoxyParamCaption})}
+
+
+
+Register callback to be called on window key action. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & Callback to be called. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classinputHelpers_1_1InputHelper_add6e4c8ac2985bca11c27a407c66626b}\label{classinputHelpers_1_1InputHelper_add6e4c8ac2985bca11c27a407c66626b}} 
+\index{inputHelpers::InputHelper@{inputHelpers::InputHelper}!registerOnMouseButtonAction@{registerOnMouseButtonAction}}
+\index{registerOnMouseButtonAction@{registerOnMouseButtonAction}!inputHelpers::InputHelper@{inputHelpers::InputHelper}}
+\doxysubsubsection{\texorpdfstring{registerOnMouseButtonAction()}{registerOnMouseButtonAction()}}
+{\footnotesize\ttfamily void input\+Helpers\+::\+Input\+Helper\+::register\+On\+Mouse\+Button\+Action (\begin{DoxyParamCaption}\item[{const std\+::function$<$ void(int button, int action, int mods)$>$}]{callback }\end{DoxyParamCaption})}
+
+
+
+Register callback to be called on mouse button action. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & Callback to be called. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classinputHelpers_1_1InputHelper_a1d3fc3919b0839f79cad44ecb948742c}\label{classinputHelpers_1_1InputHelper_a1d3fc3919b0839f79cad44ecb948742c}} 
+\index{inputHelpers::InputHelper@{inputHelpers::InputHelper}!registerOnMouseDropAction@{registerOnMouseDropAction}}
+\index{registerOnMouseDropAction@{registerOnMouseDropAction}!inputHelpers::InputHelper@{inputHelpers::InputHelper}}
+\doxysubsubsection{\texorpdfstring{registerOnMouseDropAction()}{registerOnMouseDropAction()}}
+{\footnotesize\ttfamily void input\+Helpers\+::\+Input\+Helper\+::register\+On\+Mouse\+Drop\+Action (\begin{DoxyParamCaption}\item[{const std\+::function$<$ void(double drop\+Count, const char $\ast$$\ast$paths)$>$}]{callback }\end{DoxyParamCaption})}
+
+
+
+Register callback to be called on mouse drop action. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & Callback to be called. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classinputHelpers_1_1InputHelper_a59ace63c5586d456d73186322f40326c}\label{classinputHelpers_1_1InputHelper_a59ace63c5586d456d73186322f40326c}} 
+\index{inputHelpers::InputHelper@{inputHelpers::InputHelper}!registerOnMouseMoveAction@{registerOnMouseMoveAction}}
+\index{registerOnMouseMoveAction@{registerOnMouseMoveAction}!inputHelpers::InputHelper@{inputHelpers::InputHelper}}
+\doxysubsubsection{\texorpdfstring{registerOnMouseMoveAction()}{registerOnMouseMoveAction()}}
+{\footnotesize\ttfamily void input\+Helpers\+::\+Input\+Helper\+::register\+On\+Mouse\+Move\+Action (\begin{DoxyParamCaption}\item[{const std\+::function$<$ void(double x\+Pos, double y\+Pos)$>$}]{callback }\end{DoxyParamCaption})}
+
+
+
+Register callback to be called on mouse move action. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & Callback to be called. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classinputHelpers_1_1InputHelper_ae6157da9c2eea07d713c7d5272d35c26}\label{classinputHelpers_1_1InputHelper_ae6157da9c2eea07d713c7d5272d35c26}} 
+\index{inputHelpers::InputHelper@{inputHelpers::InputHelper}!registerOnWindowResizeAction@{registerOnWindowResizeAction}}
+\index{registerOnWindowResizeAction@{registerOnWindowResizeAction}!inputHelpers::InputHelper@{inputHelpers::InputHelper}}
+\doxysubsubsection{\texorpdfstring{registerOnWindowResizeAction()}{registerOnWindowResizeAction()}}
+{\footnotesize\ttfamily void input\+Helpers\+::\+Input\+Helper\+::register\+On\+Window\+Resize\+Action (\begin{DoxyParamCaption}\item[{const std\+::function$<$ void(int width, int height)$>$}]{callback }\end{DoxyParamCaption})}
+
+
+
+Register callback to be called on window resize action. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & Callback to be called. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/hkui/input\+Helpers/Input\+Helper.\+hpp\item 
+src/input\+Helpers/Input\+Helper.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,199 @@
+\hypertarget{classtreeHelpers_1_1RectNodeABC}{}\doxysection{tree\+Helpers\+::Rect\+Node\+ABC Class Reference}
+\label{classtreeHelpers_1_1RectNodeABC}\index{treeHelpers::RectNodeABC@{treeHelpers::RectNodeABC}}
+
+
+Abstract base class representing rectangle node.  
+
+
+
+
+{\ttfamily \#include $<$Rect\+Node\+ABC.\+hpp$>$}
+
+
+
+Inheritance diagram for tree\+Helpers\+::Rect\+Node\+ABC\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtreeHelpers_1_1RectNodeABC__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for tree\+Helpers\+::Rect\+Node\+ABC\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtreeHelpers_1_1RectNodeABC__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1RectNodeABC_a68b7bce4fa39ec42e939f3fd058a98f2}\label{classtreeHelpers_1_1RectNodeABC_a68b7bce4fa39ec42e939f3fd058a98f2}} 
+{\bfseries Rect\+Node\+ABC} (const std\+::string \&vert\+Path, const std\+::string \&frag\+Path)
+\item 
+void \mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC_a7d390bb61ce28bb42de733c3e99eca7d}{enable\+Fast\+Tree\+Sort}} ()
+\begin{DoxyCompactList}\small\item\em Enable fast tree sort option for the {\itshape root} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC_ab31cff1adfc1d37739d327a641bc4db1}{update\+Fast\+Tree}} ()
+\begin{DoxyCompactList}\small\item\em Update internal state of fast tree node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC_ac512e60e6d092103d8970a66cb6bd59a}{set\+Event\+Transparent}} (const bool value)
+\begin{DoxyCompactList}\small\item\em Set node to be transparent to any events that might occur on it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC_a51e3ed505f5bbd480c9bbe5c14e83208}{append}} (\mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC}{Rect\+Node\+ABC}} $\ast$child)
+\begin{DoxyCompactList}\small\item\em Append new children to this node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC_a038ea9727e63a800d43d5a2b769803f2}{set\+State\+Source}} (\mbox{\hyperlink{structstateHelpers_1_1WindowState}{state\+Helpers\+::\+Window\+State}} $\ast$state)
+\begin{DoxyCompactList}\small\item\em Sets the unique set of states for the node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC_aab644497e8f8051bb0cf4c9f11b02a02}{emit\+Event}} (const input\+Helpers\+::\+Event \&evt)
+\begin{DoxyCompactList}\small\item\em Emit event throughout the tree structure\textquotesingle{}s nodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1RectNodeABC_accce2216d7146c92f8d7793b009d19aa}\label{classtreeHelpers_1_1RectNodeABC_accce2216d7146c92f8d7793b009d19aa}} 
+\mbox{\hyperlink{classtreeHelpers_1_1TreeStruct}{Tree\+Struct}} {\bfseries g\+Tree\+Struct}
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1RectNodeABC_af2217259b81a18021faf98470f18084d}\label{classtreeHelpers_1_1RectNodeABC_af2217259b81a18021faf98470f18084d}} 
+\mbox{\hyperlink{classmeshHelpers_1_1RectMesh}{mesh\+Helpers\+::\+Rect\+Mesh}} {\bfseries g\+Mesh}
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1RectNodeABC_a4a4ac399b7416d6dc81581e5a56af62e}\label{classtreeHelpers_1_1RectNodeABC_a4a4ac399b7416d6dc81581e5a56af62e}} 
+\mbox{\hyperlink{structmeshHelpers_1_1MeshStyle}{mesh\+Helpers\+::\+Mesh\+Style}} {\bfseries g\+Style}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1RectNodeABC_a09bc9e839e82653b4c28b0291560c14b}\label{classtreeHelpers_1_1RectNodeABC_a09bc9e839e82653b4c28b0291560c14b}} 
+{\bfseries CHILD\+\_\+\+MAY\+\_\+\+IMPLEMENT} (on\+Mouse\+Button)
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1RectNodeABC_a1ecf0f04342d6bd9446e70bf27a540ce}\label{classtreeHelpers_1_1RectNodeABC_a1ecf0f04342d6bd9446e70bf27a540ce}} 
+{\bfseries CHILD\+\_\+\+MAY\+\_\+\+IMPLEMENT} (on\+Mouse\+Hover)
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1RectNodeABC_a7405fddae65b6f2504184aa6c652a160}\label{classtreeHelpers_1_1RectNodeABC_a7405fddae65b6f2504184aa6c652a160}} 
+{\bfseries CHILD\+\_\+\+MAY\+\_\+\+IMPLEMENT} (on\+Render\+Done)
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1RectNodeABC_a45cb4acbe35dd6800633568609d65b5f}\label{classtreeHelpers_1_1RectNodeABC_a45cb4acbe35dd6800633568609d65b5f}} 
+{\bfseries CHILD\+\_\+\+MAY\+\_\+\+IMPLEMENT} (on\+Items\+Drop)
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1RectNodeABC_a15a0aaa9bd9bf1b47ff92fb742356503}\label{classtreeHelpers_1_1RectNodeABC_a15a0aaa9bd9bf1b47ff92fb742356503}} 
+{\bfseries CHILD\+\_\+\+MAY\+\_\+\+IMPLEMENT} (on\+Mouse\+Enter)
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1RectNodeABC_aa708022dfc0f336628fdd4bf5b337c63}\label{classtreeHelpers_1_1RectNodeABC_aa708022dfc0f336628fdd4bf5b337c63}} 
+{\bfseries CHILD\+\_\+\+MAY\+\_\+\+IMPLEMENT} (on\+Mouse\+Exit)
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1RectNodeABC_a6566db4a1f7c47ac1621b9eac039753f}\label{classtreeHelpers_1_1RectNodeABC_a6566db4a1f7c47ac1621b9eac039753f}} 
+{\bfseries CHILD\+\_\+\+MAY\+\_\+\+IMPLEMENT} (on\+Window\+Resize)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1RectNodeABC_aca2dcab94aa6b3f6a57d4adffe9bd14b}\label{classtreeHelpers_1_1RectNodeABC_aca2dcab94aa6b3f6a57d4adffe9bd14b}} 
+\mbox{\hyperlink{classshaderHelpers_1_1ShaderHelper}{shader\+Helpers\+::\+Shader\+Helper}} \& {\bfseries g\+Sh\+Instance}
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1RectNodeABC_a15864a1996641d1bf67bf3ad36fff941}\label{classtreeHelpers_1_1RectNodeABC_a15864a1996641d1bf67bf3ad36fff941}} 
+\mbox{\hyperlink{structstateHelpers_1_1WindowState}{state\+Helpers\+::\+Window\+State}} $\ast$ {\bfseries g\+State\+Ptr} \{ nullptr \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class representing rectangle node. 
+
+Class used to be inherited from to create new types of nodes sharing basic event/structure functionality. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classtreeHelpers_1_1RectNodeABC_a51e3ed505f5bbd480c9bbe5c14e83208}\label{classtreeHelpers_1_1RectNodeABC_a51e3ed505f5bbd480c9bbe5c14e83208}} 
+\index{treeHelpers::RectNodeABC@{treeHelpers::RectNodeABC}!append@{append}}
+\index{append@{append}!treeHelpers::RectNodeABC@{treeHelpers::RectNodeABC}}
+\doxysubsubsection{\texorpdfstring{append()}{append()}}
+{\footnotesize\ttfamily void tree\+Helpers\+::\+Rect\+Node\+ABC\+::append (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC}{Rect\+Node\+ABC}} $\ast$}]{child }\end{DoxyParamCaption})}
+
+
+
+Append new children to this node. 
+
+Appends new children to current node by setting appropriate depth level, Z coords, parent, window state and calling the append method on the internal {\bfseries{Tree Structure}}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & -\/ Node to be added as a child. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtreeHelpers_1_1RectNodeABC_aab644497e8f8051bb0cf4c9f11b02a02}\label{classtreeHelpers_1_1RectNodeABC_aab644497e8f8051bb0cf4c9f11b02a02}} 
+\index{treeHelpers::RectNodeABC@{treeHelpers::RectNodeABC}!emitEvent@{emitEvent}}
+\index{emitEvent@{emitEvent}!treeHelpers::RectNodeABC@{treeHelpers::RectNodeABC}}
+\doxysubsubsection{\texorpdfstring{emitEvent()}{emitEvent()}}
+{\footnotesize\ttfamily void tree\+Helpers\+::\+Rect\+Node\+ABC\+::emit\+Event (\begin{DoxyParamCaption}\item[{const input\+Helpers\+::\+Event \&}]{evt }\end{DoxyParamCaption})}
+
+
+
+Emit event throughout the tree structure\textquotesingle{}s nodes. 
+
+Emit events down the tree structure to notify interested nodes of such events like mouse button actions, mouse moves, keyboard pressed, etc.
+
+
+\begin{DoxyParams}{Parameters}
+{\em evt} & Event to be emmited. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtreeHelpers_1_1RectNodeABC_a7d390bb61ce28bb42de733c3e99eca7d}\label{classtreeHelpers_1_1RectNodeABC_a7d390bb61ce28bb42de733c3e99eca7d}} 
+\index{treeHelpers::RectNodeABC@{treeHelpers::RectNodeABC}!enableFastTreeSort@{enableFastTreeSort}}
+\index{enableFastTreeSort@{enableFastTreeSort}!treeHelpers::RectNodeABC@{treeHelpers::RectNodeABC}}
+\doxysubsubsection{\texorpdfstring{enableFastTreeSort()}{enableFastTreeSort()}}
+{\footnotesize\ttfamily void tree\+Helpers\+::\+Rect\+Node\+ABC\+::enable\+Fast\+Tree\+Sort (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Enable fast tree sort option for the {\itshape root} object. 
+
+Enabling this option on the root makes it possible to have fast searching or selected/hovered over/etc nodes. \mbox{\Hypertarget{classtreeHelpers_1_1RectNodeABC_ac512e60e6d092103d8970a66cb6bd59a}\label{classtreeHelpers_1_1RectNodeABC_ac512e60e6d092103d8970a66cb6bd59a}} 
+\index{treeHelpers::RectNodeABC@{treeHelpers::RectNodeABC}!setEventTransparent@{setEventTransparent}}
+\index{setEventTransparent@{setEventTransparent}!treeHelpers::RectNodeABC@{treeHelpers::RectNodeABC}}
+\doxysubsubsection{\texorpdfstring{setEventTransparent()}{setEventTransparent()}}
+{\footnotesize\ttfamily void tree\+Helpers\+::\+Rect\+Node\+ABC\+::set\+Event\+Transparent (\begin{DoxyParamCaption}\item[{const bool}]{value }\end{DoxyParamCaption})}
+
+
+
+Set node to be transparent to any events that might occur on it. 
+
+Set node to be transparent to any events that might occur on it like hover, click, etc. The next valid node after this one will receive the event instead
+
+\begin{DoxyNote}{Note}
+Currently this makes the node transparent to ALL events. In the future it will be better to make it transparent only to certain events.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Boolean deciding if node should be transparent or not. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtreeHelpers_1_1RectNodeABC_a038ea9727e63a800d43d5a2b769803f2}\label{classtreeHelpers_1_1RectNodeABC_a038ea9727e63a800d43d5a2b769803f2}} 
+\index{treeHelpers::RectNodeABC@{treeHelpers::RectNodeABC}!setStateSource@{setStateSource}}
+\index{setStateSource@{setStateSource}!treeHelpers::RectNodeABC@{treeHelpers::RectNodeABC}}
+\doxysubsubsection{\texorpdfstring{setStateSource()}{setStateSource()}}
+{\footnotesize\ttfamily void tree\+Helpers\+::\+Rect\+Node\+ABC\+::set\+State\+Source (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstateHelpers_1_1WindowState}{state\+Helpers\+::\+Window\+State}} $\ast$}]{state }\end{DoxyParamCaption})}
+
+
+
+Sets the unique set of states for the node. 
+
+Each window has a global window state that each node shall have access to read and populate according to events that take place throughout the tree structure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & State to share. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtreeHelpers_1_1RectNodeABC_ab31cff1adfc1d37739d327a641bc4db1}\label{classtreeHelpers_1_1RectNodeABC_ab31cff1adfc1d37739d327a641bc4db1}} 
+\index{treeHelpers::RectNodeABC@{treeHelpers::RectNodeABC}!updateFastTree@{updateFastTree}}
+\index{updateFastTree@{updateFastTree}!treeHelpers::RectNodeABC@{treeHelpers::RectNodeABC}}
+\doxysubsubsection{\texorpdfstring{updateFastTree()}{updateFastTree()}}
+{\footnotesize\ttfamily void tree\+Helpers\+::\+Rect\+Node\+ABC\+::update\+Fast\+Tree (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Update internal state of fast tree node. 
+
+Function required to be called in order to keep the fast tree up to date after each insertion/deletion of a node (or batch of nodes). 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/hkui/tree\+Helpers/Rect\+Node\+ABC.\+hpp\item 
+src/tree\+Helpers/Rect\+Node\+ABC.\+cpp\end{DoxyCompactItemize}

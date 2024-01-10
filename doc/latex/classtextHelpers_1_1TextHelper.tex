@@ -1,0 +1,78 @@
+\hypertarget{classtextHelpers_1_1TextHelper}{}\doxysection{text\+Helpers\+::Text\+Helper Class Reference}
+\label{classtextHelpers_1_1TextHelper}\index{textHelpers::TextHelper@{textHelpers::TextHelper}}
+
+
+Singleton class responsible for loading fonts.  
+
+
+
+
+{\ttfamily \#include $<$Text\+Helper.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structtextHelpers_1_1LoadedFont}{Loaded\+Font\+Ptr}} \mbox{\hyperlink{classtextHelpers_1_1TextHelper_a0fefa8038794566abd6c52e885a351a2}{load\+Font}} (const std\+::string \&font\+Path, const int32\+\_\+t font\+Size)
+\begin{DoxyCompactList}\small\item\em Load font and get a pointer to stored cache location of loaded font. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classtextHelpers_1_1TextHelper}{Text\+Helper}} \& \mbox{\hyperlink{classtextHelpers_1_1TextHelper_ad1748634979f90b909ae1090f6f3b1e7}{get}} ()
+\begin{DoxyCompactList}\small\item\em Get class instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Singleton class responsible for loading fonts. 
+
+Class that loads fonts into memory using vendor/stb\+\_\+image and caches data for later use so that two calls to load the same font will result in cache being accessed instead.
+
+\begin{DoxyNote}{Note}
+Currently this is not hot reloadable like shaders/textures. 
+\end{DoxyNote}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classtextHelpers_1_1TextHelper_ad1748634979f90b909ae1090f6f3b1e7}\label{classtextHelpers_1_1TextHelper_ad1748634979f90b909ae1090f6f3b1e7}} 
+\index{textHelpers::TextHelper@{textHelpers::TextHelper}!get@{get}}
+\index{get@{get}!textHelpers::TextHelper@{textHelpers::TextHelper}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtextHelpers_1_1TextHelper}{Text\+Helper}} \& text\+Helpers\+::\+Text\+Helper\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get class instance. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the class instance. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtextHelpers_1_1TextHelper_a0fefa8038794566abd6c52e885a351a2}\label{classtextHelpers_1_1TextHelper_a0fefa8038794566abd6c52e885a351a2}} 
+\index{textHelpers::TextHelper@{textHelpers::TextHelper}!loadFont@{loadFont}}
+\index{loadFont@{loadFont}!textHelpers::TextHelper@{textHelpers::TextHelper}}
+\doxysubsubsection{\texorpdfstring{loadFont()}{loadFont()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtextHelpers_1_1LoadedFont}{Loaded\+Font\+Ptr}} text\+Helpers\+::\+Text\+Helper\+::load\+Font (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{font\+Path,  }\item[{const int32\+\_\+t}]{font\+Size }\end{DoxyParamCaption})}
+
+
+
+Load font and get a pointer to stored cache location of loaded font. 
+
+Function loads font into memory, if not already in cache, and returns pointer inside the map where this data is located.
+
+\begin{DoxyNote}{Note}
+No SDF support as of now. There are some questionable bugs.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em font\+Path} & Path to font to be loaded. \\
+\hline
+{\em font\+Size} & Size of the font. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Loaded\+Font\+Ptr Pointer to loaded font data. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/hkui/text\+Helpers/Text\+Helper.\+hpp\item 
+src/text\+Helpers/Text\+Helper.\+cpp\end{DoxyCompactItemize}

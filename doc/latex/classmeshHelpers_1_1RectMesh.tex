@@ -1,0 +1,142 @@
+\hypertarget{classmeshHelpers_1_1RectMesh}{}\doxysection{mesh\+Helpers\+::Rect\+Mesh Class Reference}
+\label{classmeshHelpers_1_1RectMesh}\index{meshHelpers::RectMesh@{meshHelpers::RectMesh}}
+
+
+Basic rectangular mesh class encapsulation.  
+
+
+
+
+{\ttfamily \#include $<$Rect\+Mesh.\+hpp$>$}
+
+
+
+Collaboration diagram for mesh\+Helpers\+::Rect\+Mesh\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmeshHelpers_1_1RectMesh__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structmeshHelpers_1_1RectMesh_1_1BoxModel}{Box\+Model}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmeshHelpers_1_1RectMesh_a147a57adee80465783a349cf8e8d981e}\label{classmeshHelpers_1_1RectMesh_a147a57adee80465783a349cf8e8d981e}} 
+{\bfseries Rect\+Mesh} (const std\+::string \&vert\+Path, const std\+::string \&frag\+Path)
+\item 
+\mbox{\Hypertarget{classmeshHelpers_1_1RectMesh_a9af5ac081b38338d13e373f1a2f06778}\label{classmeshHelpers_1_1RectMesh_a9af5ac081b38338d13e373f1a2f06778}} 
+{\bfseries Rect\+Mesh} (const \mbox{\hyperlink{classmeshHelpers_1_1RectMesh}{Rect\+Mesh}} \&)=delete
+\item 
+\mbox{\Hypertarget{classmeshHelpers_1_1RectMesh_aa4b5b9be0b1f2f916e9097eb66bf1576}\label{classmeshHelpers_1_1RectMesh_aa4b5b9be0b1f2f916e9097eb66bf1576}} 
+\mbox{\hyperlink{classmeshHelpers_1_1RectMesh}{Rect\+Mesh}} \& {\bfseries operator=} (const \mbox{\hyperlink{classmeshHelpers_1_1RectMesh}{Rect\+Mesh}} \&)=delete
+\item 
+\mbox{\Hypertarget{classmeshHelpers_1_1RectMesh_ae9a86b14cf7ba9484ec8a413ecafcb0a}\label{classmeshHelpers_1_1RectMesh_ae9a86b14cf7ba9484ec8a413ecafcb0a}} 
+void {\bfseries reload\+Shader} () const
+\item 
+glm\+::mat4 \mbox{\hyperlink{classmeshHelpers_1_1RectMesh_ab070e3641dd924b6e4d297c85763377c}{get\+Transform}} ()
+\begin{DoxyCompactList}\small\item\em Get model matrix of object. \end{DoxyCompactList}\item 
+shader\+Helpers\+::shader\+Id \mbox{\hyperlink{classmeshHelpers_1_1RectMesh_aa9d87f48655760913917cc176e1ed038}{get\+Shader\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Get the object\textquotesingle{}s shader {\bfseries{Id}}. \end{DoxyCompactList}\item 
+shader\+Helpers\+::shader\+Id\+Ptr \mbox{\hyperlink{classmeshHelpers_1_1RectMesh_a6248c287ff613577776f4969e8ba2016}{get\+Shader\+Id\+Ptr}} () const
+\begin{DoxyCompactList}\small\item\em Get the object\textquotesingle{}s shader {\bfseries{Id}} pointer. \end{DoxyCompactList}\item 
+vao\+Id \mbox{\hyperlink{classmeshHelpers_1_1RectMesh_a3ab78e00be1248c230ed639f6efbc02a}{get\+Vao\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Get the object\textquotesingle{}s vao {\bfseries{Id}} to be bound. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmeshHelpers_1_1RectMesh_a11bdaa425b44be4a31150541ca27f5c2}\label{classmeshHelpers_1_1RectMesh_a11bdaa425b44be4a31150541ca27f5c2}} 
+\mbox{\hyperlink{classshaderHelpers_1_1UniformKeeper}{shader\+Helpers\+::\+Uniform\+Keeper}} {\bfseries g\+Uni\+Keeper}
+\item 
+\mbox{\Hypertarget{classmeshHelpers_1_1RectMesh_af70f9dd67981ba84e7f3a9714ec5fc82}\label{classmeshHelpers_1_1RectMesh_af70f9dd67981ba84e7f3a9714ec5fc82}} 
+glm\+::vec4 {\bfseries g\+Color} \{ 0 \}
+\item 
+\mbox{\Hypertarget{classmeshHelpers_1_1RectMesh_a1ddc5fe2de697a349a6e520622310251}\label{classmeshHelpers_1_1RectMesh_a1ddc5fe2de697a349a6e520622310251}} 
+\mbox{\hyperlink{structmeshHelpers_1_1RectMesh_1_1BoxModel}{Box\+Model}} {\bfseries g\+Box}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Basic rectangular mesh class encapsulation. 
+
+Class representing a rectangular mesh who\textquotesingle{}s shader can be set and transforms changed. Contains subclass \mbox{\hyperlink{structmeshHelpers_1_1RectMesh_1_1BoxModel}{Box\+Model}} representing translation/rotation/scale of the rectangular mesh. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classmeshHelpers_1_1RectMesh_aa9d87f48655760913917cc176e1ed038}\label{classmeshHelpers_1_1RectMesh_aa9d87f48655760913917cc176e1ed038}} 
+\index{meshHelpers::RectMesh@{meshHelpers::RectMesh}!getShaderId@{getShaderId}}
+\index{getShaderId@{getShaderId}!meshHelpers::RectMesh@{meshHelpers::RectMesh}}
+\doxysubsubsection{\texorpdfstring{getShaderId()}{getShaderId()}}
+{\footnotesize\ttfamily shader\+Helpers\+::shader\+Id mesh\+Helpers\+::\+Rect\+Mesh\+::get\+Shader\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the object\textquotesingle{}s shader {\bfseries{Id}}. 
+
+Get object\textquotesingle{}s shader {\bfseries{Id}} and, if not set, return 0 denoting no shader has been computed for this object.
+
+\begin{DoxyNote}{Note}
+Note that this is a pure value returned, not a reference type. If the shader of the object is reloaded, consumer needs to call get\+Shader\+Id again to get the after-\/reload new {\bfseries{Id}}. 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Shader {\bfseries{Id}} of the current object. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classmeshHelpers_1_1RectMesh_a6248c287ff613577776f4969e8ba2016}\label{classmeshHelpers_1_1RectMesh_a6248c287ff613577776f4969e8ba2016}} 
+\index{meshHelpers::RectMesh@{meshHelpers::RectMesh}!getShaderIdPtr@{getShaderIdPtr}}
+\index{getShaderIdPtr@{getShaderIdPtr}!meshHelpers::RectMesh@{meshHelpers::RectMesh}}
+\doxysubsubsection{\texorpdfstring{getShaderIdPtr()}{getShaderIdPtr()}}
+{\footnotesize\ttfamily shader\+Helpers\+::shader\+Id\+Ptr mesh\+Helpers\+::\+Rect\+Mesh\+::get\+Shader\+Id\+Ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the object\textquotesingle{}s shader {\bfseries{Id}} pointer. 
+
+Get object\textquotesingle{}s shader {\bfseries{Id}} pointer. It may be nullptr (very unlikely) if not initialized or -\/1 if shader loading failed.
+
+\begin{DoxyNote}{Note}
+If shader of object tends to frequently reload, it\textquotesingle{}s better to use this function to get the {\bfseries{Id}} instead of {\bfseries{get\+Shader\+Id}}. 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Shader {\bfseries{Id}} pointer of the current object. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classmeshHelpers_1_1RectMesh_ab070e3641dd924b6e4d297c85763377c}\label{classmeshHelpers_1_1RectMesh_ab070e3641dd924b6e4d297c85763377c}} 
+\index{meshHelpers::RectMesh@{meshHelpers::RectMesh}!getTransform@{getTransform}}
+\index{getTransform@{getTransform}!meshHelpers::RectMesh@{meshHelpers::RectMesh}}
+\doxysubsubsection{\texorpdfstring{getTransform()}{getTransform()}}
+{\footnotesize\ttfamily glm\+::mat4 mesh\+Helpers\+::\+Rect\+Mesh\+::get\+Transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get model matrix of object. 
+
+Compute and return the model matrix of this object. Scale and Translation is relative to top left corner and Rotation is relative to the center of the rectangle.
+
+\begin{DoxyNote}{Note}
+Off by one pixel render defects might occur due to rotation being applied from the center instead or from the top left corner.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Mat4x4 representing Open\+GL compliant model matrix. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classmeshHelpers_1_1RectMesh_a3ab78e00be1248c230ed639f6efbc02a}\label{classmeshHelpers_1_1RectMesh_a3ab78e00be1248c230ed639f6efbc02a}} 
+\index{meshHelpers::RectMesh@{meshHelpers::RectMesh}!getVaoId@{getVaoId}}
+\index{getVaoId@{getVaoId}!meshHelpers::RectMesh@{meshHelpers::RectMesh}}
+\doxysubsubsection{\texorpdfstring{getVaoId()}{getVaoId()}}
+{\footnotesize\ttfamily vao\+Id mesh\+Helpers\+::\+Rect\+Mesh\+::get\+Vao\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the object\textquotesingle{}s vao {\bfseries{Id}} to be bound. 
+
+\begin{DoxyReturn}{Returns}
+Vao {\bfseries{Id}} of object. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/hkui/mesh\+Helpers/Rect\+Mesh.\+hpp\item 
+src/mesh\+Helpers/Rect\+Mesh.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,77 @@
+\hypertarget{classrenderHelpers_1_1RenderHelper}{}\doxysection{render\+Helpers\+::Render\+Helper Class Reference}
+\label{classrenderHelpers_1_1RenderHelper}\index{renderHelpers::RenderHelper@{renderHelpers::RenderHelper}}
+
+
+Class for rendering basic meshes.  
+
+
+
+
+{\ttfamily \#include $<$Render\+Helper.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classrenderHelpers_1_1RenderHelper_a84cfd11f3379ead1a283fb1fabb7b3e1}{set\+Projection\+Matrix}} (const glm\+::mat4 \&proj\+Matrix)
+\begin{DoxyCompactList}\small\item\em Sets the projection matrix that will be used on next draw call. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classrenderHelpers_1_1RenderHelper_adb03c86c20b8bc755e029a49de77597e}{render\+Rect\+Node}} (\mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC}{tree\+Helpers\+::\+Rect\+Node\+ABC}} \&node)
+\begin{DoxyCompactList}\small\item\em Render node of type {\bfseries{mesh\+Helpers\+::\+Rect\+Node\+ABC}} . \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrenderHelpers_1_1RenderHelper_a888351985931c14444f2bb3d9180a4bc}\label{classrenderHelpers_1_1RenderHelper_a888351985931c14444f2bb3d9180a4bc}} 
+void \mbox{\hyperlink{classrenderHelpers_1_1RenderHelper_a888351985931c14444f2bb3d9180a4bc}{clear\+Screen}} ()
+\begin{DoxyCompactList}\small\item\em Clear currently bound window depth and color bit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrenderHelpers_1_1RenderHelper_a55ad7740fd29f21181ee196369f2d1eb}\label{classrenderHelpers_1_1RenderHelper_a55ad7740fd29f21181ee196369f2d1eb}} 
+static \mbox{\hyperlink{classrenderHelpers_1_1RenderHelper}{Render\+Helper}} \& {\bfseries get} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrenderHelpers_1_1RenderHelper_af2e67bc46e22bbe838d82898b83cd1a9}\label{classrenderHelpers_1_1RenderHelper_af2e67bc46e22bbe838d82898b83cd1a9}} 
+static constexpr float {\bfseries MAX\+\_\+\+LAYERS} \{ -\/100 \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for rendering basic meshes. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classrenderHelpers_1_1RenderHelper_adb03c86c20b8bc755e029a49de77597e}\label{classrenderHelpers_1_1RenderHelper_adb03c86c20b8bc755e029a49de77597e}} 
+\index{renderHelpers::RenderHelper@{renderHelpers::RenderHelper}!renderRectNode@{renderRectNode}}
+\index{renderRectNode@{renderRectNode}!renderHelpers::RenderHelper@{renderHelpers::RenderHelper}}
+\doxysubsubsection{\texorpdfstring{renderRectNode()}{renderRectNode()}}
+{\footnotesize\ttfamily void render\+Helpers\+::\+Render\+Helper\+::render\+Rect\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC}{tree\+Helpers\+::\+Rect\+Node\+ABC}} \&}]{node }\end{DoxyParamCaption})}
+
+
+
+Render node of type {\bfseries{mesh\+Helpers\+::\+Rect\+Node\+ABC}} . 
+
+Quickly render {\bfseries{mesh\+Helpers\+::\+Rect\+Node\+ABC}} type. This enables it\textquotesingle{}s stored shader to be the active one while also uploads uniforms such as projection/model matrix and scale of the object to the shader.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & -\/ Rectangle node to be rendered. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classrenderHelpers_1_1RenderHelper_a84cfd11f3379ead1a283fb1fabb7b3e1}\label{classrenderHelpers_1_1RenderHelper_a84cfd11f3379ead1a283fb1fabb7b3e1}} 
+\index{renderHelpers::RenderHelper@{renderHelpers::RenderHelper}!setProjectionMatrix@{setProjectionMatrix}}
+\index{setProjectionMatrix@{setProjectionMatrix}!renderHelpers::RenderHelper@{renderHelpers::RenderHelper}}
+\doxysubsubsection{\texorpdfstring{setProjectionMatrix()}{setProjectionMatrix()}}
+{\footnotesize\ttfamily void render\+Helpers\+::\+Render\+Helper\+::set\+Projection\+Matrix (\begin{DoxyParamCaption}\item[{const glm\+::mat4 \&}]{proj\+Matrix }\end{DoxyParamCaption})}
+
+
+
+Sets the projection matrix that will be used on next draw call. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em proj\+Matrix} & Projection Matrix to be used. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/hkui/render\+Helpers/Render\+Helper.\+hpp\item 
+src/render\+Helpers/Render\+Helper.\+cpp\end{DoxyCompactItemize}

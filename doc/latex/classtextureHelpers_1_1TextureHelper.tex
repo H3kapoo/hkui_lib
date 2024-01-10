@@ -1,0 +1,95 @@
+\hypertarget{classtextureHelpers_1_1TextureHelper}{}\doxysection{texture\+Helpers\+::Texture\+Helper Class Reference}
+\label{classtextureHelpers_1_1TextureHelper}\index{textureHelpers::TextureHelper@{textureHelpers::TextureHelper}}
+
+
+Simple class that deals with texture objects.  
+
+
+
+
+{\ttfamily \#include $<$Texture\+Helper.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structtextureHelpers_1_1TextureData}{Texture\+Data\+Ptr}} \mbox{\hyperlink{classtextureHelpers_1_1TextureHelper_a2339070082b9606253f6dcead037bbb7}{load\+Texture}} (const std\+::string \&file\+Path)
+\begin{DoxyCompactList}\small\item\em Load and retrieve a texture {\bfseries{\mbox{\hyperlink{structtextureHelpers_1_1TextureData}{Texture\+Data}}}} pointer handle from the specified texture path. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classtextureHelpers_1_1TextureHelper_a501b53ba691389ade89bf3eddcb653d1}{reload\+From\+Path}} (const std\+::string \&file\+Path)
+\begin{DoxyCompactList}\small\item\em Reload a texture from the specified texture path. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classtextureHelpers_1_1TextureHelper}{Texture\+Helper}} \& \mbox{\hyperlink{classtextureHelpers_1_1TextureHelper_ae8bb4971cf61a9a634a06567a827ac26}{get}} ()
+\begin{DoxyCompactList}\small\item\em Get class instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Simple class that deals with texture objects. 
+
+Class that deals with texture objects such as loading them and provinding a gateway to their object id. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classtextureHelpers_1_1TextureHelper_ae8bb4971cf61a9a634a06567a827ac26}\label{classtextureHelpers_1_1TextureHelper_ae8bb4971cf61a9a634a06567a827ac26}} 
+\index{textureHelpers::TextureHelper@{textureHelpers::TextureHelper}!get@{get}}
+\index{get@{get}!textureHelpers::TextureHelper@{textureHelpers::TextureHelper}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtextureHelpers_1_1TextureHelper}{Texture\+Helper}} \& texture\+Helpers\+::\+Texture\+Helper\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get class instance. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the class instance. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtextureHelpers_1_1TextureHelper_a2339070082b9606253f6dcead037bbb7}\label{classtextureHelpers_1_1TextureHelper_a2339070082b9606253f6dcead037bbb7}} 
+\index{textureHelpers::TextureHelper@{textureHelpers::TextureHelper}!loadTexture@{loadTexture}}
+\index{loadTexture@{loadTexture}!textureHelpers::TextureHelper@{textureHelpers::TextureHelper}}
+\doxysubsubsection{\texorpdfstring{loadTexture()}{loadTexture()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtextureHelpers_1_1TextureData}{Texture\+Data\+Ptr}} texture\+Helpers\+::\+Texture\+Helper\+::load\+Texture (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Path }\end{DoxyParamCaption})}
+
+
+
+Load and retrieve a texture {\bfseries{\mbox{\hyperlink{structtextureHelpers_1_1TextureData}{Texture\+Data}}}} pointer handle from the specified texture path. 
+
+This function checks if a texture with the specified texture path already exists in the textures cache. If it does, it returns a pointer to its {\bfseries{\mbox{\hyperlink{structtextureHelpers_1_1TextureData}{Texture\+Data}}}}. Otherwise, it loads the texture, stores the loaded {\bfseries{\mbox{\hyperlink{structtextureHelpers_1_1TextureData}{Texture\+Data}}}} in the cache, and returns a pointer to the newly loaded {\bfseries{\mbox{\hyperlink{structtextureHelpers_1_1TextureData}{Texture\+Data}}}}.
+
+\begin{DoxyNote}{Note}
+Returned dereferenced pointer value {\bfseries{g\+Id}} will be 0 in case any errors occured. It will never be {\bfseries{nullptr}}. 
+
+Reason for pointer return instead of plain structure is to have easier texture reloading capabilities.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Path} & The file path to the texture.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the texture data structure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtextureHelpers_1_1TextureHelper_a501b53ba691389ade89bf3eddcb653d1}\label{classtextureHelpers_1_1TextureHelper_a501b53ba691389ade89bf3eddcb653d1}} 
+\index{textureHelpers::TextureHelper@{textureHelpers::TextureHelper}!reloadFromPath@{reloadFromPath}}
+\index{reloadFromPath@{reloadFromPath}!textureHelpers::TextureHelper@{textureHelpers::TextureHelper}}
+\doxysubsubsection{\texorpdfstring{reloadFromPath()}{reloadFromPath()}}
+{\footnotesize\ttfamily void texture\+Helpers\+::\+Texture\+Helper\+::reload\+From\+Path (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Path }\end{DoxyParamCaption})}
+
+
+
+Reload a texture from the specified texture path. 
+
+This function creates a new {\bfseries{\mbox{\hyperlink{structtextureHelpers_1_1TextureData}{Texture\+Data}}}} from the provided texture path and overrides the cached value at {\bfseries{file\+Path}} location with the newly created {\bfseries{\mbox{\hyperlink{structtextureHelpers_1_1TextureData}{Texture\+Data}}}} if successfull, otherwise it keeps previous data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Path} & The file path to the texture.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Doesn\textquotesingle{}t return anything. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/hkui/texture\+Helpers/Texture\+Helper.\+hpp\item 
+src/texture\+Helpers/Texture\+Helper.\+cpp\end{DoxyCompactItemize}

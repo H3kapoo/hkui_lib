@@ -1,0 +1,332 @@
+\hypertarget{classshaderHelpers_1_1ShaderHelper}{}\doxysection{shader\+Helpers\+::Shader\+Helper Class Reference}
+\label{classshaderHelpers_1_1ShaderHelper}\index{shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}}
+
+
+Singleton providing shader load/reload and uniform access capabilities.  
+
+
+
+
+{\ttfamily \#include $<$Shader\+Helper.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+shader\+Id\+Ptr \mbox{\hyperlink{classshaderHelpers_1_1ShaderHelper_a4d22f261712f7f514171d63ebe621c0b}{load\+From\+Path}} (const std\+::string \&vert\+Path, const std\+::string \&frag\+Path)
+\begin{DoxyCompactList}\small\item\em Load and retrieve a shader {\bfseries{Id}} pointer handle from the specified vertex and fragment shader paths. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classshaderHelpers_1_1ShaderHelper_a09deb9fd7598f4f6978c73c72ca8c2a9}{reload\+From\+Path}} (const std\+::string \&vert\+Path, const std\+::string \&frag\+Path)
+\begin{DoxyCompactList}\small\item\em Reload a shader from the specified vertex and fragment shader paths. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classshaderHelpers_1_1ShaderHelper_a43a82d85973ab26cd35cc5bea6798a61}{set\+Active\+Shader\+Id}} (const shader\+Id id)
+\begin{DoxyCompactList}\small\item\em Set currently active shader {\bfseries{Id}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classshaderHelpers_1_1ShaderHelper_a9700f3f358cf35bff3ec9c0aa00b481a}{reset\+Bound\+Shader}} () const
+\begin{DoxyCompactList}\small\item\em Reset currently active shader {\bfseries{Id}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classshaderHelpers_1_1ShaderHelper_adf2eedbc093295ba8c996a3b117d9226}{set\+Int}} (const char $\ast$location, int value)
+\begin{DoxyCompactList}\small\item\em Load integer uniform to currently active shader {\bfseries{Id}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classshaderHelpers_1_1ShaderHelper_a60438c09730c778454da522116f37c1b}{set\+Int\+Vec}} (const char $\ast$location, uint32\+\_\+t amount, int $\ast$flat\+Values)
+\begin{DoxyCompactList}\small\item\em Load integer vector uniform to currently active shader {\bfseries{Id}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classshaderHelpers_1_1ShaderHelper_a8c9f9f2528eca67eb0a5f9fe67a9b80c}{set\+Vec1f}} (const char $\ast$location, float value)
+\begin{DoxyCompactList}\small\item\em Load float uniform to currently active shader {\bfseries{Id}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classshaderHelpers_1_1ShaderHelper_a6266708e6e5501e1f5afae636a0196e5}{set\+Vec2f}} (const char $\ast$location, glm\+::vec2 value)
+\begin{DoxyCompactList}\small\item\em Load 2D-\/float uniform to currently active shader {\bfseries{Id}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classshaderHelpers_1_1ShaderHelper_a1fd7fb8b22a027c021482ebacc63777c}{set\+Vec3f}} (const char $\ast$location, glm\+::vec3 value)
+\begin{DoxyCompactList}\small\item\em Load 3D-\/float uniform to currently active shader {\bfseries{Id}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classshaderHelpers_1_1ShaderHelper_a218956e4ea01750951f677fd3e1a40d5}{set\+Vec4f}} (const char $\ast$location, glm\+::vec4 value)
+\begin{DoxyCompactList}\small\item\em Load 4D-\/float uniform to currently active shader {\bfseries{Id}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classshaderHelpers_1_1ShaderHelper_a0d6f1b928399f12da4b07e6dc6b7007c}{set\+Matrix4}} (const char $\ast$location, const glm\+::mat4 value)
+\begin{DoxyCompactList}\small\item\em Load 4x4 Matrix uniform to currently active shader {\bfseries{Id}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classshaderHelpers_1_1ShaderHelper_ae014cca59f32501ab49f32f9d75b3a7b}{set\+Matrix4\+Vec}} (const char $\ast$location, uint32\+\_\+t amount, const float $\ast$flat\+Values)
+\begin{DoxyCompactList}\small\item\em Load 4x4 Matrix vector uniform to currently active shader {\bfseries{Id}}. \end{DoxyCompactList}\item 
+shader\+Id \mbox{\hyperlink{classshaderHelpers_1_1ShaderHelper_ad87ba060d6be5fb64ec505ad93a287aa}{get\+Active\+Shader\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Get currently active shader. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classshaderHelpers_1_1ShaderHelper}{Shader\+Helper}} \& \mbox{\hyperlink{classshaderHelpers_1_1ShaderHelper_a951953b225c847692ee08a1399cf91c5}{get}} ()
+\begin{DoxyCompactList}\small\item\em Get class instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Singleton providing shader load/reload and uniform access capabilities. 
+
+Singleton class providing easy means to load/reload shaders and access to their uniforms. Class also provides caching capabilities for shaders. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classshaderHelpers_1_1ShaderHelper_a951953b225c847692ee08a1399cf91c5}\label{classshaderHelpers_1_1ShaderHelper_a951953b225c847692ee08a1399cf91c5}} 
+\index{shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}!get@{get}}
+\index{get@{get}!shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classshaderHelpers_1_1ShaderHelper}{Shader\+Helper}} \& shader\+Helpers\+::\+Shader\+Helper\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get class instance. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the class instance. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classshaderHelpers_1_1ShaderHelper_ad87ba060d6be5fb64ec505ad93a287aa}\label{classshaderHelpers_1_1ShaderHelper_ad87ba060d6be5fb64ec505ad93a287aa}} 
+\index{shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}!getActiveShaderId@{getActiveShaderId}}
+\index{getActiveShaderId@{getActiveShaderId}!shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}}
+\doxysubsubsection{\texorpdfstring{getActiveShaderId()}{getActiveShaderId()}}
+{\footnotesize\ttfamily shader\+Id shader\+Helpers\+::\+Shader\+Helper\+::get\+Active\+Shader\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get currently active shader. 
+
+\begin{DoxyReturn}{Returns}
+Returns currently active shader {\bfseries{Id}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classshaderHelpers_1_1ShaderHelper_a4d22f261712f7f514171d63ebe621c0b}\label{classshaderHelpers_1_1ShaderHelper_a4d22f261712f7f514171d63ebe621c0b}} 
+\index{shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}!loadFromPath@{loadFromPath}}
+\index{loadFromPath@{loadFromPath}!shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}}
+\doxysubsubsection{\texorpdfstring{loadFromPath()}{loadFromPath()}}
+{\footnotesize\ttfamily shader\+Id\+Ptr shader\+Helpers\+::\+Shader\+Helper\+::load\+From\+Path (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{vert\+Path,  }\item[{const std\+::string \&}]{frag\+Path }\end{DoxyParamCaption})}
+
+
+
+Load and retrieve a shader {\bfseries{Id}} pointer handle from the specified vertex and fragment shader paths. 
+
+This function checks if a shader with the specified vertex and fragment shader already exists in the shader cache. If it does, it returns a pointer to its {\bfseries{Id}}. Otherwise, it compiles and links the shaders, stores the {\bfseries{Id}} in the cache, and returns a pointer to the new {\bfseries{Id}}.
+
+\begin{DoxyNote}{Note}
+Returned dereferenced pointer value will be -\/1 in case any errors occured. It will never be {\bfseries{nullptr}}. 
+
+Reason for pointer return instead of plain integer is to have easier shader reloading capabilities.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em vert\+Path} & The file path to the vertex shader source code. \\
+\hline
+{\em frag\+Path} & The file path to the fragment shader source code.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the shader program {\bfseries{Id}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classshaderHelpers_1_1ShaderHelper_a09deb9fd7598f4f6978c73c72ca8c2a9}\label{classshaderHelpers_1_1ShaderHelper_a09deb9fd7598f4f6978c73c72ca8c2a9}} 
+\index{shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}!reloadFromPath@{reloadFromPath}}
+\index{reloadFromPath@{reloadFromPath}!shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}}
+\doxysubsubsection{\texorpdfstring{reloadFromPath()}{reloadFromPath()}}
+{\footnotesize\ttfamily void shader\+Helpers\+::\+Shader\+Helper\+::reload\+From\+Path (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{vert\+Path,  }\item[{const std\+::string \&}]{frag\+Path }\end{DoxyParamCaption})}
+
+
+
+Reload a shader from the specified vertex and fragment shader paths. 
+
+This function creates a new shader {\bfseries{Id}} from the provided combined paths and overrides the cached value at combined paths location with the newly created shader {\bfseries{Id}} if successfull, otherwise it keeps previous shader {\bfseries{Id}} value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vert\+Path} & The file path to the vertex shader source code. \\
+\hline
+{\em frag\+Path} & The file path to the fragment shader source code.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Doesn\textquotesingle{}t return anything. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classshaderHelpers_1_1ShaderHelper_a9700f3f358cf35bff3ec9c0aa00b481a}\label{classshaderHelpers_1_1ShaderHelper_a9700f3f358cf35bff3ec9c0aa00b481a}} 
+\index{shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}!resetBoundShader@{resetBoundShader}}
+\index{resetBoundShader@{resetBoundShader}!shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}}
+\doxysubsubsection{\texorpdfstring{resetBoundShader()}{resetBoundShader()}}
+{\footnotesize\ttfamily void shader\+Helpers\+::\+Shader\+Helper\+::reset\+Bound\+Shader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Reset currently active shader {\bfseries{Id}}. 
+
+\begin{DoxyReturn}{Returns}
+Doesn\textquotesingle{}t return anything. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classshaderHelpers_1_1ShaderHelper_a43a82d85973ab26cd35cc5bea6798a61}\label{classshaderHelpers_1_1ShaderHelper_a43a82d85973ab26cd35cc5bea6798a61}} 
+\index{shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}!setActiveShaderId@{setActiveShaderId}}
+\index{setActiveShaderId@{setActiveShaderId}!shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}}
+\doxysubsubsection{\texorpdfstring{setActiveShaderId()}{setActiveShaderId()}}
+{\footnotesize\ttfamily void shader\+Helpers\+::\+Shader\+Helper\+::set\+Active\+Shader\+Id (\begin{DoxyParamCaption}\item[{const shader\+Id}]{id }\end{DoxyParamCaption})}
+
+
+
+Set currently active shader {\bfseries{Id}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Shader {\bfseries{Id}} to be bound.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+All functions from this class will only affect the currenly active shader.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Doesn\textquotesingle{}t return anything. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classshaderHelpers_1_1ShaderHelper_adf2eedbc093295ba8c996a3b117d9226}\label{classshaderHelpers_1_1ShaderHelper_adf2eedbc093295ba8c996a3b117d9226}} 
+\index{shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}!setInt@{setInt}}
+\index{setInt@{setInt}!shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}}
+\doxysubsubsection{\texorpdfstring{setInt()}{setInt()}}
+{\footnotesize\ttfamily void shader\+Helpers\+::\+Shader\+Helper\+::set\+Int (\begin{DoxyParamCaption}\item[{const char $\ast$}]{location,  }\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+Load integer uniform to currently active shader {\bfseries{Id}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & Location of uniform to be set in the shader. \\
+\hline
+{\em value} & Value to be set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Doesn\textquotesingle{}t return anything. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classshaderHelpers_1_1ShaderHelper_a60438c09730c778454da522116f37c1b}\label{classshaderHelpers_1_1ShaderHelper_a60438c09730c778454da522116f37c1b}} 
+\index{shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}!setIntVec@{setIntVec}}
+\index{setIntVec@{setIntVec}!shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}}
+\doxysubsubsection{\texorpdfstring{setIntVec()}{setIntVec()}}
+{\footnotesize\ttfamily void shader\+Helpers\+::\+Shader\+Helper\+::set\+Int\+Vec (\begin{DoxyParamCaption}\item[{const char $\ast$}]{location,  }\item[{uint32\+\_\+t}]{amount,  }\item[{int $\ast$}]{flat\+Values }\end{DoxyParamCaption})}
+
+
+
+Load integer vector uniform to currently active shader {\bfseries{Id}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & Location of uniform to be set in the shader. \\
+\hline
+{\em amount} & Amount of values to be set. \\
+\hline
+{\em flat\+Values} & Array of values to be set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Doesn\textquotesingle{}t return anything. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classshaderHelpers_1_1ShaderHelper_a0d6f1b928399f12da4b07e6dc6b7007c}\label{classshaderHelpers_1_1ShaderHelper_a0d6f1b928399f12da4b07e6dc6b7007c}} 
+\index{shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}!setMatrix4@{setMatrix4}}
+\index{setMatrix4@{setMatrix4}!shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}}
+\doxysubsubsection{\texorpdfstring{setMatrix4()}{setMatrix4()}}
+{\footnotesize\ttfamily void shader\+Helpers\+::\+Shader\+Helper\+::set\+Matrix4 (\begin{DoxyParamCaption}\item[{const char $\ast$}]{location,  }\item[{const glm\+::mat4}]{value }\end{DoxyParamCaption})}
+
+
+
+Load 4x4 Matrix uniform to currently active shader {\bfseries{Id}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & Location of uniform to be set in the shader. \\
+\hline
+{\em value} & Matrix value to be set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Doesn\textquotesingle{}t return anything. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classshaderHelpers_1_1ShaderHelper_ae014cca59f32501ab49f32f9d75b3a7b}\label{classshaderHelpers_1_1ShaderHelper_ae014cca59f32501ab49f32f9d75b3a7b}} 
+\index{shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}!setMatrix4Vec@{setMatrix4Vec}}
+\index{setMatrix4Vec@{setMatrix4Vec}!shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}}
+\doxysubsubsection{\texorpdfstring{setMatrix4Vec()}{setMatrix4Vec()}}
+{\footnotesize\ttfamily void shader\+Helpers\+::\+Shader\+Helper\+::set\+Matrix4\+Vec (\begin{DoxyParamCaption}\item[{const char $\ast$}]{location,  }\item[{uint32\+\_\+t}]{amount,  }\item[{const float $\ast$}]{flat\+Values }\end{DoxyParamCaption})}
+
+
+
+Load 4x4 Matrix vector uniform to currently active shader {\bfseries{Id}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & Location of uniform to be set in the shader. \\
+\hline
+{\em amount} & Amount of matrices to be set in the shader. \\
+\hline
+{\em flat\+Values} & Vector of matrices values to be set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Doesn\textquotesingle{}t return anything. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classshaderHelpers_1_1ShaderHelper_a8c9f9f2528eca67eb0a5f9fe67a9b80c}\label{classshaderHelpers_1_1ShaderHelper_a8c9f9f2528eca67eb0a5f9fe67a9b80c}} 
+\index{shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}!setVec1f@{setVec1f}}
+\index{setVec1f@{setVec1f}!shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}}
+\doxysubsubsection{\texorpdfstring{setVec1f()}{setVec1f()}}
+{\footnotesize\ttfamily void shader\+Helpers\+::\+Shader\+Helper\+::set\+Vec1f (\begin{DoxyParamCaption}\item[{const char $\ast$}]{location,  }\item[{float}]{value }\end{DoxyParamCaption})}
+
+
+
+Load float uniform to currently active shader {\bfseries{Id}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & Location of uniform to be set in the shader. \\
+\hline
+{\em value} & Value to be set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Doesn\textquotesingle{}t return anything. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classshaderHelpers_1_1ShaderHelper_a6266708e6e5501e1f5afae636a0196e5}\label{classshaderHelpers_1_1ShaderHelper_a6266708e6e5501e1f5afae636a0196e5}} 
+\index{shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}!setVec2f@{setVec2f}}
+\index{setVec2f@{setVec2f}!shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}}
+\doxysubsubsection{\texorpdfstring{setVec2f()}{setVec2f()}}
+{\footnotesize\ttfamily void shader\+Helpers\+::\+Shader\+Helper\+::set\+Vec2f (\begin{DoxyParamCaption}\item[{const char $\ast$}]{location,  }\item[{glm\+::vec2}]{value }\end{DoxyParamCaption})}
+
+
+
+Load 2D-\/float uniform to currently active shader {\bfseries{Id}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & Location of uniform to be set in the shader. \\
+\hline
+{\em value} & 2D-\/\+Value to be set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Doesn\textquotesingle{}t return anything. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classshaderHelpers_1_1ShaderHelper_a1fd7fb8b22a027c021482ebacc63777c}\label{classshaderHelpers_1_1ShaderHelper_a1fd7fb8b22a027c021482ebacc63777c}} 
+\index{shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}!setVec3f@{setVec3f}}
+\index{setVec3f@{setVec3f}!shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}}
+\doxysubsubsection{\texorpdfstring{setVec3f()}{setVec3f()}}
+{\footnotesize\ttfamily void shader\+Helpers\+::\+Shader\+Helper\+::set\+Vec3f (\begin{DoxyParamCaption}\item[{const char $\ast$}]{location,  }\item[{glm\+::vec3}]{value }\end{DoxyParamCaption})}
+
+
+
+Load 3D-\/float uniform to currently active shader {\bfseries{Id}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & Location of uniform to be set in the shader. \\
+\hline
+{\em value} & 3D-\/\+Value to be set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Doesn\textquotesingle{}t return anything. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classshaderHelpers_1_1ShaderHelper_a218956e4ea01750951f677fd3e1a40d5}\label{classshaderHelpers_1_1ShaderHelper_a218956e4ea01750951f677fd3e1a40d5}} 
+\index{shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}!setVec4f@{setVec4f}}
+\index{setVec4f@{setVec4f}!shaderHelpers::ShaderHelper@{shaderHelpers::ShaderHelper}}
+\doxysubsubsection{\texorpdfstring{setVec4f()}{setVec4f()}}
+{\footnotesize\ttfamily void shader\+Helpers\+::\+Shader\+Helper\+::set\+Vec4f (\begin{DoxyParamCaption}\item[{const char $\ast$}]{location,  }\item[{glm\+::vec4}]{value }\end{DoxyParamCaption})}
+
+
+
+Load 4D-\/float uniform to currently active shader {\bfseries{Id}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & Location of uniform to be set in the shader. \\
+\hline
+{\em value} & 4D-\/\+Value to be set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Doesn\textquotesingle{}t return anything. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/hkui/shader\+Helpers/Shader\+Helper.\+hpp\item 
+src/shader\+Helpers/Shader\+Helper.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,51 @@
+\hypertarget{classmeshHelpers_1_1MeshBuilder}{}\doxysection{mesh\+Helpers\+::Mesh\+Builder Class Reference}
+\label{classmeshHelpers_1_1MeshBuilder}\index{meshHelpers::MeshBuilder@{meshHelpers::MeshBuilder}}
+
+
+Singleton class for generating vertex buffer objects.  
+
+
+
+
+{\ttfamily \#include $<$Mesh\+Builder.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+vao\+Id \mbox{\hyperlink{classmeshHelpers_1_1MeshBuilder_ac4bee5510e6e7f275de6c3137d8c0bea}{gen\+Quad\+Mesh}} ()
+\begin{DoxyCompactList}\small\item\em Generate vao {\bfseries{Id}} for a simple quad mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmeshHelpers_1_1MeshBuilder_afc6170f1951183df95c9836f0f83f195}\label{classmeshHelpers_1_1MeshBuilder_afc6170f1951183df95c9836f0f83f195}} 
+static \mbox{\hyperlink{classmeshHelpers_1_1MeshBuilder}{Mesh\+Builder}} \& {\bfseries get} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Singleton class for generating vertex buffer objects. 
+
+Simple singleton class for generating boundable vao objects. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classmeshHelpers_1_1MeshBuilder_ac4bee5510e6e7f275de6c3137d8c0bea}\label{classmeshHelpers_1_1MeshBuilder_ac4bee5510e6e7f275de6c3137d8c0bea}} 
+\index{meshHelpers::MeshBuilder@{meshHelpers::MeshBuilder}!genQuadMesh@{genQuadMesh}}
+\index{genQuadMesh@{genQuadMesh}!meshHelpers::MeshBuilder@{meshHelpers::MeshBuilder}}
+\doxysubsubsection{\texorpdfstring{genQuadMesh()}{genQuadMesh()}}
+{\footnotesize\ttfamily vao\+Id mesh\+Helpers\+::\+Mesh\+Builder\+::gen\+Quad\+Mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Generate vao {\bfseries{Id}} for a simple quad mesh. 
+
+Generate vertex data for a quad that\textquotesingle{}s using an index buffer. It has two attributes\+: position and texture coordinates. If quad vao has been generated before, simply return it\textquotesingle{}s cached value.
+
+\begin{DoxyReturn}{Returns}
+vao\+ID of generated quad mesh to be bound. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/hkui/mesh\+Helpers/Mesh\+Builder.\+hpp\item 
+src/mesh\+Helpers/Mesh\+Builder.\+cpp\end{DoxyCompactItemize}

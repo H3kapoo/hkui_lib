@@ -1,0 +1,55 @@
+\hypertarget{classtreeHelpers_1_1TreeStruct}{}\doxysection{tree\+Helpers\+::Tree\+Struct Class Reference}
+\label{classtreeHelpers_1_1TreeStruct}\index{treeHelpers::TreeStruct@{treeHelpers::TreeStruct}}
+
+
+Class representing a tree structure of nodes.  
+
+
+
+
+{\ttfamily \#include $<$Tree\+Struct.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1TreeStruct_a64b80fe3fc51befbfdb04e78507b2464}\label{classtreeHelpers_1_1TreeStruct_a64b80fe3fc51befbfdb04e78507b2464}} 
+void {\bfseries append} (\mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC}{Rect\+Node\+ABC}} $\ast$node)
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1TreeStruct_a60f8699d37b2034f506e07263adec402}\label{classtreeHelpers_1_1TreeStruct_a60f8699d37b2034f506e07263adec402}} 
+void {\bfseries remove} (const \mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC}{Rect\+Node\+ABC}} $\ast$node)
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1TreeStruct_a38921c13b2515c7d5c4359a5fcc16c04}\label{classtreeHelpers_1_1TreeStruct_a38921c13b2515c7d5c4359a5fcc16c04}} 
+void {\bfseries find} (const \mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC}{Rect\+Node\+ABC}} $\ast$node)
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1TreeStruct_a870f8323fabb570df2857c1584dcfa3a}\label{classtreeHelpers_1_1TreeStruct_a870f8323fabb570df2857c1584dcfa3a}} 
+void {\bfseries find\+Deep} (const \mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC}{Rect\+Node\+ABC}} $\ast$node)
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1TreeStruct_a0f370a8c1e1215ff35fd7f61e505f6fd}\label{classtreeHelpers_1_1TreeStruct_a0f370a8c1e1215ff35fd7f61e505f6fd}} 
+void {\bfseries set\+Parent} (\mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC}{Rect\+Node\+ABC}} $\ast$node)
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1TreeStruct_a3f3a8e0661646cbe75e6e94330553c95}\label{classtreeHelpers_1_1TreeStruct_a3f3a8e0661646cbe75e6e94330553c95}} 
+bool {\bfseries is\+Root\+Node} () const
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1TreeStruct_a7ee6c8723ab67eb2c3e53282ad67deb4}\label{classtreeHelpers_1_1TreeStruct_a7ee6c8723ab67eb2c3e53282ad67deb4}} 
+tree\+Node\+Id {\bfseries get\+Id} () const
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1TreeStruct_a29a51dab6073f49a3902226c020b593d}\label{classtreeHelpers_1_1TreeStruct_a29a51dab6073f49a3902226c020b593d}} 
+tree\+Node\+Level {\bfseries get\+Level} () const
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1TreeStruct_a4ac71fae69492ae654e98929efe1f59c}\label{classtreeHelpers_1_1TreeStruct_a4ac71fae69492ae654e98929efe1f59c}} 
+const std\+::vector$<$ \mbox{\hyperlink{classtreeHelpers_1_1RectNodeABC}{Rect\+Node\+ABC}} $\ast$ $>$ {\bfseries get\+Children} () const
+\item 
+\mbox{\Hypertarget{classtreeHelpers_1_1TreeStruct_aefe792419e3db1d86a32bf3d35de006b}\label{classtreeHelpers_1_1TreeStruct_aefe792419e3db1d86a32bf3d35de006b}} 
+void {\bfseries set\+Level} (const tree\+Node\+Level level)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing a tree structure of nodes. 
+
+Tree structure of nodes with helper functions such as adding/removing and finding tree nodes. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/hkui/tree\+Helpers/Tree\+Struct.\+hpp\item 
+src/tree\+Helpers/Tree\+Struct.\+cpp\end{DoxyCompactItemize}

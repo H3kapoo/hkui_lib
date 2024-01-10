@@ -1,0 +1,158 @@
+\hypertarget{classshaderHelpers_1_1UniformKeeper}{}\doxysection{shader\+Helpers\+::Uniform\+Keeper Class Reference}
+\label{classshaderHelpers_1_1UniformKeeper}\index{shaderHelpers::UniformKeeper@{shaderHelpers::UniformKeeper}}
+
+
+Class that keeps track of a node\textquotesingle{}s uniforms.  
+
+
+
+
+{\ttfamily \#include $<$Uniform\+Keeper.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classshaderHelpers_1_1UniformKeeper_a2290946bbf8fab3744cae488c3f4895c}{watch}} (const std\+::string \&name, glm\+::vec4 $\ast$value)
+\begin{DoxyCompactList}\small\item\em Watch the vec4 address of an named uniform. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classshaderHelpers_1_1UniformKeeper_a32b373ea818f56f6719d6bd0cb287557}{watch}} (const std\+::string \&name, glm\+::vec3 $\ast$value)
+\begin{DoxyCompactList}\small\item\em Watch the vec3 address of an named uniform. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classshaderHelpers_1_1UniformKeeper_a7b41f527bf55418d65503aa94d102688}{watch}} (const std\+::string \&name, uint32\+\_\+t $\ast$value)
+\begin{DoxyCompactList}\small\item\em Watch the int address of an named uniform. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classshaderHelpers_1_1UniformKeeper_a49bd90199497db2478a543fadba28b2a}{default\+Vec4}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Default zero initialize the named uniform. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classshaderHelpers_1_1UniformKeeper_a2ab68727d8a4a023a2098470fabfe45c}{default\+Vec3}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Default zero initialize the named uniform. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classshaderHelpers_1_1UniformKeeper_a8eb47c5ee7dd241b0753ac36d2db28d8}{default\+Int}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Default zero initialize the named uniform. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classshaderHelpers_1_1UniformKeeper_a858045a45329ed4cb9e541c64b8a823d}\label{classshaderHelpers_1_1UniformKeeper_a858045a45329ed4cb9e541c64b8a823d}} 
+std\+::vector$<$ std\+::pair$<$ std\+::string, glm\+::vec4 $\ast$ $>$ $>$ {\bfseries g\+Vec4\+Ptrs}
+\item 
+\mbox{\Hypertarget{classshaderHelpers_1_1UniformKeeper_a69152955c4b64080fb6605effd590175}\label{classshaderHelpers_1_1UniformKeeper_a69152955c4b64080fb6605effd590175}} 
+std\+::vector$<$ std\+::pair$<$ std\+::string, glm\+::vec3 $\ast$ $>$ $>$ {\bfseries g\+Vec3\+Ptrs}
+\item 
+\mbox{\Hypertarget{classshaderHelpers_1_1UniformKeeper_a5d227a62a3b12dde5a7615c4dbc01bd5}\label{classshaderHelpers_1_1UniformKeeper_a5d227a62a3b12dde5a7615c4dbc01bd5}} 
+std\+::vector$<$ std\+::pair$<$ std\+::string, uint32\+\_\+t $\ast$ $>$ $>$ {\bfseries g\+Int\+Ptrs}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class that keeps track of a node\textquotesingle{}s uniforms. 
+
+This class tracks what uniform a node has (and also watches them by means or pointers) so that the user doesn\textquotesingle{}t have to alter the rendering code itself (setting of uniforms to the shader). This acts like a middle man and lets the user set/track whatever uniforms he wants without altering the rendering code. It may be a trade-\/off between performance and readability in the future.
+
+\begin{DoxyNote}{Note}
+EXTRA CARE needs to be taken so that we don\textquotesingle{}t push to watch the same variable in some kind of loop. It will KILL performance. 
+\end{DoxyNote}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classshaderHelpers_1_1UniformKeeper_a8eb47c5ee7dd241b0753ac36d2db28d8}\label{classshaderHelpers_1_1UniformKeeper_a8eb47c5ee7dd241b0753ac36d2db28d8}} 
+\index{shaderHelpers::UniformKeeper@{shaderHelpers::UniformKeeper}!defaultInt@{defaultInt}}
+\index{defaultInt@{defaultInt}!shaderHelpers::UniformKeeper@{shaderHelpers::UniformKeeper}}
+\doxysubsubsection{\texorpdfstring{defaultInt()}{defaultInt()}}
+{\footnotesize\ttfamily void shader\+Helpers\+::\+Uniform\+Keeper\+::default\+Int (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default zero initialize the named uniform. 
+
+Used in case we don\textquotesingle{}t want any particular value for this uniform but we need to initialize it with a default value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Int uniform name. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classshaderHelpers_1_1UniformKeeper_a2ab68727d8a4a023a2098470fabfe45c}\label{classshaderHelpers_1_1UniformKeeper_a2ab68727d8a4a023a2098470fabfe45c}} 
+\index{shaderHelpers::UniformKeeper@{shaderHelpers::UniformKeeper}!defaultVec3@{defaultVec3}}
+\index{defaultVec3@{defaultVec3}!shaderHelpers::UniformKeeper@{shaderHelpers::UniformKeeper}}
+\doxysubsubsection{\texorpdfstring{defaultVec3()}{defaultVec3()}}
+{\footnotesize\ttfamily void shader\+Helpers\+::\+Uniform\+Keeper\+::default\+Vec3 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default zero initialize the named uniform. 
+
+Used in case we don\textquotesingle{}t want any particular value for this uniform but we need to initialize it with a default value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Vec3 uniform name. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classshaderHelpers_1_1UniformKeeper_a49bd90199497db2478a543fadba28b2a}\label{classshaderHelpers_1_1UniformKeeper_a49bd90199497db2478a543fadba28b2a}} 
+\index{shaderHelpers::UniformKeeper@{shaderHelpers::UniformKeeper}!defaultVec4@{defaultVec4}}
+\index{defaultVec4@{defaultVec4}!shaderHelpers::UniformKeeper@{shaderHelpers::UniformKeeper}}
+\doxysubsubsection{\texorpdfstring{defaultVec4()}{defaultVec4()}}
+{\footnotesize\ttfamily void shader\+Helpers\+::\+Uniform\+Keeper\+::default\+Vec4 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default zero initialize the named uniform. 
+
+Used in case we don\textquotesingle{}t want any particular value for this uniform but we need to initialize it with a default value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Vec4 uniform name. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classshaderHelpers_1_1UniformKeeper_a32b373ea818f56f6719d6bd0cb287557}\label{classshaderHelpers_1_1UniformKeeper_a32b373ea818f56f6719d6bd0cb287557}} 
+\index{shaderHelpers::UniformKeeper@{shaderHelpers::UniformKeeper}!watch@{watch}}
+\index{watch@{watch}!shaderHelpers::UniformKeeper@{shaderHelpers::UniformKeeper}}
+\doxysubsubsection{\texorpdfstring{watch()}{watch()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void shader\+Helpers\+::\+Uniform\+Keeper\+::watch (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{glm\+::vec3 $\ast$}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Watch the vec3 address of an named uniform. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Uniform name. \\
+\hline
+{\em value} & Pointer to the vec3 to be watched. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classshaderHelpers_1_1UniformKeeper_a2290946bbf8fab3744cae488c3f4895c}\label{classshaderHelpers_1_1UniformKeeper_a2290946bbf8fab3744cae488c3f4895c}} 
+\index{shaderHelpers::UniformKeeper@{shaderHelpers::UniformKeeper}!watch@{watch}}
+\index{watch@{watch}!shaderHelpers::UniformKeeper@{shaderHelpers::UniformKeeper}}
+\doxysubsubsection{\texorpdfstring{watch()}{watch()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void shader\+Helpers\+::\+Uniform\+Keeper\+::watch (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{glm\+::vec4 $\ast$}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Watch the vec4 address of an named uniform. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Uniform name. \\
+\hline
+{\em value} & Pointer to the vec4 to be watched. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classshaderHelpers_1_1UniformKeeper_a7b41f527bf55418d65503aa94d102688}\label{classshaderHelpers_1_1UniformKeeper_a7b41f527bf55418d65503aa94d102688}} 
+\index{shaderHelpers::UniformKeeper@{shaderHelpers::UniformKeeper}!watch@{watch}}
+\index{watch@{watch}!shaderHelpers::UniformKeeper@{shaderHelpers::UniformKeeper}}
+\doxysubsubsection{\texorpdfstring{watch()}{watch()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void shader\+Helpers\+::\+Uniform\+Keeper\+::watch (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{uint32\+\_\+t $\ast$}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Watch the int address of an named uniform. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Uniform name. \\
+\hline
+{\em value} & Pointer to the int to be watched. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/hkui/shader\+Helpers/Uniform\+Keeper.\+hpp\end{DoxyCompactItemize}
