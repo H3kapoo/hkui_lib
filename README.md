@@ -7,7 +7,7 @@ Simple UI library written in C++ with glew/GLFW backends.
 For now only the **static library** can be built, namely: **libhkui.a**
 MSVC support does not currently exist and Windows version has been created with MinGW support, so make sure you have that tool-chain installed first.
 
-####For Linux:
+#### For Linux:
 ```bash
     chmod +x ./build.sh
     ./build.sh
@@ -16,7 +16,7 @@ MSVC support does not currently exist and Windows version has been created with 
     Build dependencies: GLFW glew freetype
 ```
 ---
-####For Windows:
+#### For Windows:
 ```cmd
     cmake .
     make
