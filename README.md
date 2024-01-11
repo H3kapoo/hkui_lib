@@ -1,6 +1,14 @@
-## HkUI
+# HkUI
 
 Simple UI library written in C++ with glew/GLFW backends.
+
+### Documentation
+
+Code documentation is available inside ```doc/html/index.html``` that is created by Doxygen.
+
+### Examples
+
+ToBeAdded: examples will appear in the ```examples``` folder.
 
 ### Building
 
@@ -45,4 +53,4 @@ Before building, make sure you **fill all** the necessary locations for the incl
     set(GLFW_LIBRARY_PATH_DIRECTORY "path to lib of glfw")    
 ```
 
-To link, simply add ```-lhkui``` and also link with ```freetype``` ```GLEW``` and ```glfw``` to your project link libraries.
+To link, simply add ```-lhkui``` and also link with ```freetype``` ```GLEW``` and ```glfw``` to your project link libraries. The include directory is simply ```include``` folder of this repo.
