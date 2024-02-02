@@ -9,6 +9,8 @@
 namespace utils
 {
 
+void logAndExitOnNull(void* ptr, const std::string& log);
+
 glm::vec4 hexToVec4(const std::string& hexColor);
 
 }

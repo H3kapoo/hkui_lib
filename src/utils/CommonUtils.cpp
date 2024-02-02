@@ -1,7 +1,18 @@
 #include "../../include/hkui/utils/CommonUtils.hpp"
 
+#include <cstdlib>
+
 namespace utils
 {
+
+void logAndExitOnNull(void* ptr, const std::string& log)
+{
+    if (ptr) return;
+
+    fprintf(stderr, "[FATAL]: %s\n", log.c_str());
+    std::exit(1);
+}
+
 glm::vec4 hexToVec4(const std::string& hexColor) {
 
     /* A bit restrictive but good enough for now */

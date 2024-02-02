@@ -2,32 +2,32 @@
 
 namespace meshHelpers
 {
-RectMesh::RectMesh(const std::string& vertPath, const std::string& fragPath)
+RectMesh::RectMesh(const std::string& vertCorP, const std::string& fragCorP, const bool immediate)
     : gMeshBuilder(MeshBuilder::get())
     , gShInstance(shaderHelpers::ShaderHelper::get())
 {
     gVaoId = gMeshBuilder.genQuadMesh();
 
     /* Load shader */
-    gShaderIdPtr = gShInstance.loadFromPath(vertPath, fragPath);
-    if (*gShaderIdPtr == -1)
+    if (immediate)
     {
-        fprintf(stderr, "Failed to load RectMesh using: %s and %s\n", vertPath.c_str(), fragPath.c_str());
-        *gShaderIdPtr = 0;
+        gShaderIdPtr = gShInstance.loadFromImmediate("BASE_SHADER", vertCorP, fragCorP);
+        if (*gShaderIdPtr == -1)
+        {
+            fprintf(stderr, "Failed to load RectMesh using: BASE_SHADER shader\n");
+            *gShaderIdPtr = 0;
+        }
+    }
+    else
+    {
+        gShaderIdPtr = gShInstance.loadFromPath(vertCorP, fragCorP);
+        if (*gShaderIdPtr == -1)
+        {
+            fprintf(stderr, "Failed to load RectMesh using: %s and %s\n", vertCorP.c_str(), fragCorP.c_str());
+            *gShaderIdPtr = 0;
+        }
     }
 }
-
-/**
- * @brief Get model matrix of object.
- *
- * Compute and return the model matrix of this object. Scale and Translation is relative to top left corner
- * and Rotation is relative to the center of the rectangle.
- *
- * @note Off by one pixel render defects might occur due to rotation being applied from the center instead
- *       or from the top left corner.
- *
- * @return Mat4x4 representing OpenGL compliant model matrix.
- */
 
 glm::mat4 RectMesh::getTransform()
 {

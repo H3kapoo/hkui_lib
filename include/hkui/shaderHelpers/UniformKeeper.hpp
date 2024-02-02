@@ -60,7 +60,7 @@ public:
     }
 
     /*
-        This default init is needed in cases where X_obj and Y_obj use the same
+        NOTE: This default init is needed in cases where X_obj and Y_obj use the same
         A_shader but X_obj doesn't need to use A_shader.someUniform but Y_obj uses it.
         If X_obj doesnt set a default value, Y_obj's someUniform will be used as OpenGL
         is a big state machine and from it's perspective that uniform hasn't changed.

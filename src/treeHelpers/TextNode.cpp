@@ -8,7 +8,7 @@ namespace treeHelpers
 {
 
 TextNode::TextNode(const std::string& vertPath, const std::string& fragPath)
-    : RectNodeABC("src/assets/shaders/borderedV.glsl", "src/assets/shaders/borderedF.glsl")
+    : RectNodeABC()
     , node{ vertPath, fragPath }
     , gRenderInstance{ renderHelpers::RenderHelper::get() }
     , gTextHelperInstance{ textHelpers::TextHelper::get() }

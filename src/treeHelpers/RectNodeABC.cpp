@@ -2,13 +2,22 @@
 
 #include <stdio.h>
 
+#include "../../include/hkui/utils/CommonUtils.hpp"
+
 namespace treeHelpers
 {
 
-RectNodeABC::RectNodeABC(const std::string& vertPath, const std::string& fragPath)
-    : gShInstance{ shaderHelpers::ShaderHelper::get() }
-    , gMesh{ vertPath, fragPath }
+RectNodeABC::RectNodeABC()
+    : RectNodeABC(baseV, baseF, true)
 {}
+
+RectNodeABC::RectNodeABC(const std::string& vertCorP, const std::string& fragCorP,
+    const bool immediate)
+    : gShInstance{ shaderHelpers::ShaderHelper::get() }
+    , gMesh{ vertCorP, fragCorP, immediate }
+{
+    gMesh.gUniKeeper.watch("uResolution", &gMesh.gBox.scale);
+}
 
 RectNodeABC::~RectNodeABC()
 {
@@ -18,12 +27,6 @@ RectNodeABC::~RectNodeABC()
     }
 }
 
-/**
- * @brief Enable fast tree sort option for the *root* object.
- *
- * Enabling this option on the root makes it possible to have fast searching
- * or selected/hovered over/etc nodes.
- */
 void RectNodeABC::enableFastTreeSort()
 {
     if (!gFastTreeSortPtr)
@@ -33,12 +36,6 @@ void RectNodeABC::enableFastTreeSort()
     }
 }
 
-/**
- * @brief Update internal state of fast tree node.
- *
- * Function required to be called in order to keep the fast tree up to date
- * after each insertion/deletion of a node (or batch of nodes).
- */
 void RectNodeABC::updateFastTree()
 {
     if (gFastTreeSortPtr)
@@ -55,58 +52,22 @@ void RectNodeABC::updateFastTree()
     fprintf(stderr, "FastTreeSort is not enabled!\n");
 }
 
-
-/**
- * @brief Set node to be transparent to any events that might occur on it.
- *
- * Set node to be transparent to any events that might occur on it like hover,
- * click, etc. The next valid node after this one will receive the event instead
- *
- * @note Currently this makes the node transparent to ALL events. In the future it will
- *       be better to make it transparent only to certain events.
- *
- * @param value Boolean deciding if node should be transparent or not.
- */
 void RectNodeABC::setEventTransparent(const bool value)
 {
     gIsEventTransparent = value;
 }
 
-
-/**
- * @brief Append new children to this node.
- *
- * Appends new children to current node by setting appropriate depth level,
- * Z coords, parent, window state and calling the append method on the internal **Tree Structure**.
- *
- * @param child - Node to be added as a child.
- */
-void RectNodeABC::append(RectNodeABC* child)
-{
-    /* Z axis shall not be user modified and it's soley used with the depth buffer to
-       prevent overdraw. */
-    child->gMesh.gBox.pos.z = gTreeStruct.getLevel() + 1;
-    child->gTreeStruct.setParent(this);
-    child->gStatePtr = gStatePtr;
-
-    gTreeStruct.append(child);
-}
-
-
-/**
- * @brief Emit event throughout the tree structure's nodes.
- *
- * Emit events down the tree structure to notify interested nodes
- * of such events like mouse button actions, mouse moves, keyboard pressed, etc.
- *
- * @param evt Event to be emmited.
- */
 void RectNodeABC::emitEvent(const inputHelpers::Event& evt)
 {
+    /* If root node */
+    if (gTreeStruct.getId() == 1)
+    {
+        utils::logAndExitOnNull(gFastTreeSortPtr, "Fast tree was not initialized!");
+    }
+
     switch (evt)
     {
     case inputHelpers::Event::WindowResize:
-        onWindowResize();
         for (const auto& c : gFastTreeSortPtr->getBuffer())
         {
             c->onWindowResize();
@@ -123,9 +84,7 @@ void RectNodeABC::emitEvent(const inputHelpers::Event& evt)
         onRenderDone();
         break;
     case inputHelpers::Event::ItemsDrop:
-        //TODO: Bad design for now
         searchForMouseDropLoc();
-        onRenderDone(); //TODO: Why is this here?
         break;
     default:
         fprintf(stderr, "Unknown base event: %d\n", static_cast<int>(evt));
@@ -133,25 +92,22 @@ void RectNodeABC::emitEvent(const inputHelpers::Event& evt)
     }
 }
 
+void RectNodeABC::append(RectNodeABC* child)
+{
+    /* Z axis shall not be user modified and it's soley used with the depth buffer to
+       prevent overdraw. */
+    child->gMesh.gBox.pos.z = gTreeStruct.getLevel() + 1;
+    child->gTreeStruct.setParent(this);
+    child->gStatePtr = gStatePtr;
 
-/**
- * @brief Sets the unique set of states for the node.
- *
- * Each window has a global window state that each node shall have access to read
- * and populate according to events that take place throughout the tree structure.
- *
- * @param state State to share.
- */
+    gTreeStruct.append(child);
+}
+
 void RectNodeABC::setStateSource(stateHelpers::WindowState* state)
 {
     gStatePtr = state;
 }
 
-
-/**
- * @brief Interanl - just find out who will be the selected node upon mouse being
- *        clicked and trigger the event on the concrete class of the node.
- */
 void RectNodeABC::searchForMouseSelection()
 {
     if (!gStatePtr)
@@ -180,7 +136,6 @@ void RectNodeABC::searchForMouseSelection()
         }
     }
 }
-
 
 void RectNodeABC::searchForMouseHover()
 {
@@ -238,7 +193,6 @@ void RectNodeABC::searchForMouseHover()
         }
     }
 }
-
 
 void RectNodeABC::searchForMouseDropLoc()
 {

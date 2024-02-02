@@ -31,12 +31,21 @@ public:
         glm::vec3 rot{ 0 };
     };
 
-    RectMesh(const std::string& vertPath, const std::string& fragPath);
+    RectMesh(const std::string& vertPath, const std::string& fragPath, const bool immediate);
     RectMesh(const RectMesh&) = delete; /* Can't copy due to reference */
     RectMesh& operator=(const RectMesh&) = delete; /* Can't copy due to reference */
 
-    void reloadShader() const;
-
+    /**
+     * @brief Get model matrix of object.
+     *
+     * Compute and return the model matrix of this object. Scale and Translation is relative to top left corner
+     * and Rotation is relative to the center of the rectangle.
+     *
+     * @note Off by one pixel render defects might occur due to rotation being applied from the center instead
+     *       or from the top left corner.
+     *
+     * @return Mat4x4 representing OpenGL compliant model matrix.
+     */
     glm::mat4 getTransform();
 
     inline shaderHelpers::shaderId getShaderId() const;

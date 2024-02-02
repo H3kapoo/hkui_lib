@@ -22,11 +22,32 @@ class RectNodeABC;
 class FastTreeSort
 {
 public:
+    /**
+     * @brief Get a reference to the internal fast tree buffer.
+     *
+     * @note This doesn't call **sortBuffer** internally, make sure you already called
+     *       it beforehand if necessary.
+     *
+     * @return Vector reference to the buffer.
+     */
     std::vector<RectNodeABC*>& getBuffer();
+
+    /**
+     * @brief Populate and sort the internal buffer based on the tree starting at the provided **root** node
+     *        and supplied **sortFunc**.
+     *
+     * @param root      Node to build buffer from.
+     * @param sortFunc  Function used to sort the internal buffer.
+     */
     void sortBuffer(RectNodeABC* root,
         const std::function<bool(const RectNodeABC* x, const RectNodeABC* y)> sortFunc);
 
 private:
+    /**
+     * @brief Internal - push a reference to all the nodes inside the internal buffer.
+     *
+     * @param node Node to be analyzed.
+     */
     void recPushChildren(RectNodeABC* node);
 
     std::vector<RectNodeABC*> gBuffer{};
