@@ -15,9 +15,7 @@ RectNodeABC::RectNodeABC(const std::string& vertCorP, const std::string& fragCor
     const bool immediate)
     : gShInstance{ shaderHelpers::ShaderHelper::get() }
     , gMesh{ vertCorP, fragCorP, immediate }
-{
-    gMesh.gUniKeeper.watch("uResolution", &gMesh.gBox.scale);
-}
+{}
 
 RectNodeABC::~RectNodeABC()
 {

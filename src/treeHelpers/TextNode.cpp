@@ -13,18 +13,12 @@ TextNode::TextNode(const std::string& vertPath, const std::string& fragPath)
     , gRenderInstance{ renderHelpers::RenderHelper::get() }
     , gTextHelperInstance{ textHelpers::TextHelper::get() }
 {
-    lfPtr = gTextHelperInstance.loadFont("src/assets/fonts/LiberationSerif-Regular.ttf", 32);
-    /* What are we even supposed to do if we don't manage to load the font? */
-    if (!lfPtr) { exit(1); }
-
     /* Watch out shader's uniforms for changes. Set default if any not used. */
     gMesh.gUniKeeper.watch("uInnerColor", &gMesh.gColor);
     gMesh.gUniKeeper.watch("uBorderColor", &gStyle.gBorderColor);
     gMesh.gUniKeeper.watch("uBorderSize", &gStyle.gBorderSize);
     gMesh.gUniKeeper.watch("uResolution", &gMesh.gBox.scale);
 
-    /* Texture is not watched and simply set in the renderer instead. Its not hot for now*/
-    node.gStyle.gTextureId = lfPtr->id;
     node.gMesh.gUniKeeper.watch("uColor", &node.gMesh.gColor);
     node.gMesh.gUniKeeper.watch("uCharIndex", &gLetterIdx);
 
@@ -32,6 +26,16 @@ TextNode::TextNode(const std::string& vertPath, const std::string& fragPath)
 
     node.gMesh.gBox.scale.x = 32;
     node.gMesh.gBox.scale.y = 32;
+}
+
+bool TextNode::setFont(const std::string& fontPath, const uint32_t fontSize)
+{
+    lfPtr = gTextHelperInstance.loadFont(fontPath, fontSize);
+    if (!lfPtr) return false;
+
+    /* Texture is not watched and simply set in the renderer instead. Its not hotreloadable for now*/
+    node.gStyle.gTextureId = lfPtr->id;
+    return true;
 }
 
 void TextNode::setTextColor(const glm::vec4& color)
@@ -58,6 +62,8 @@ void TextNode::alignTextToCenter(const bool align)
 
 void TextNode::computeLines()
 {
+    utils::logAndExitOnNull(lfPtr, "No font has been loaded!");
+
     gTextLines.clear();
 
     const float maxX = gMesh.gBox.scale.x;
