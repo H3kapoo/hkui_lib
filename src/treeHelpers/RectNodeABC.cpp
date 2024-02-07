@@ -11,18 +11,14 @@ RectNodeABC::RectNodeABC()
     : RectNodeABC(baseV, baseF, true)
 {}
 
-RectNodeABC::RectNodeABC(const std::string& vertCorP, const std::string& fragCorP,
-    const bool immediate)
-    : gShInstance{ shaderHelpers::ShaderHelper::get() }
-    , gMesh{ vertCorP, fragCorP, immediate }
+RectNodeABC::RectNodeABC(const std::string& vertCorP, const std::string& fragCorP, const bool immediate)
+    : gShInstance{shaderHelpers::ShaderHelper::get()}
+    , gMesh{vertCorP, fragCorP, immediate}
 {}
 
 RectNodeABC::~RectNodeABC()
 {
-    if (gFastTreeSortPtr)
-    {
-        delete gFastTreeSortPtr;
-    }
+    if (gFastTreeSortPtr) { delete gFastTreeSortPtr; }
 }
 
 void RectNodeABC::enableFastTreeSort()
@@ -38,7 +34,8 @@ void RectNodeABC::updateFastTree()
 {
     if (gFastTreeSortPtr)
     {
-        gFastTreeSortPtr->sortBuffer(this, [](const RectNodeABC* x, const RectNodeABC* y) -> bool
+        gFastTreeSortPtr->sortBuffer(this,
+            [](const RectNodeABC* x, const RectNodeABC* y) -> bool
             {
                 /* Sort so that vec is ordered by highest level first */
                 return x->gTreeStruct.getLevel() > y->gTreeStruct.getLevel();
@@ -58,10 +55,7 @@ void RectNodeABC::setEventTransparent(const bool value)
 void RectNodeABC::emitEvent(const inputHelpers::Event& evt)
 {
     /* If root node */
-    if (gTreeStruct.getId() == 1)
-    {
-        utils::logAndExitOnNull(gFastTreeSortPtr, "Fast tree was not initialized!");
-    }
+    if (gTreeStruct.getId() == 1) { utils::logAndExitOnNull(gFastTreeSortPtr, "Fast tree was not initialized!"); }
 
     switch (evt)
     {
@@ -110,7 +104,8 @@ void RectNodeABC::searchForMouseSelection()
 {
     if (!gStatePtr)
     {
-        fprintf(stderr, "Window State pointer is not set for node with id: %d\n", gTreeStruct.getId()); exit(1);
+        fprintf(stderr, "Window State pointer is not set for node with id: %d\n", gTreeStruct.getId());
+        exit(1);
     }
 
     if (gTreeStruct.isRootNode() && gFastTreeSortPtr != nullptr)
@@ -139,12 +134,13 @@ void RectNodeABC::searchForMouseHover()
 {
     if (!gStatePtr)
     {
-        fprintf(stderr, "Window State pointer is not set for node with id: %d\n", gTreeStruct.getId()); exit(1);
+        fprintf(stderr, "Window State pointer is not set for node with id: %d\n", gTreeStruct.getId());
+        exit(1);
     }
 
     if (gTreeStruct.isRootNode() && gFastTreeSortPtr != nullptr)
     {
-        bool changeNeeded{ false };
+        bool changeNeeded{false};
         for (const auto& c : gFastTreeSortPtr->getBuffer())
         {
             if (c->gIsEventTransparent) { continue; }
@@ -168,13 +164,10 @@ void RectNodeABC::searchForMouseHover()
             }
         }
 
-        bool notifiedExit{ false }, notifiedEnter{ false };
+        bool notifiedExit{false}, notifiedEnter{false};
         for (const auto& c : gFastTreeSortPtr->getBuffer())
         {
-            if (!changeNeeded || (notifiedEnter && notifiedExit))
-            {
-                break;
-            }
+            if (!changeNeeded || (notifiedEnter && notifiedExit)) { break; }
 
             auto id = c->gTreeStruct.getId();
             if (id == gStatePtr->hoveredId)
@@ -196,7 +189,8 @@ void RectNodeABC::searchForMouseDropLoc()
 {
     if (!gStatePtr)
     {
-        fprintf(stderr, "Window State pointer is not set for node with id: %d\n", gTreeStruct.getId()); exit(1);
+        fprintf(stderr, "Window State pointer is not set for node with id: %d\n", gTreeStruct.getId());
+        exit(1);
     }
 
     if (gTreeStruct.isRootNode() && gFastTreeSortPtr != nullptr)
@@ -217,4 +211,4 @@ void RectNodeABC::searchForMouseDropLoc()
         }
     }
 }
-}
+} // namespace treeHelpers

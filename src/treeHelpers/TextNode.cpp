@@ -1,6 +1,7 @@
 #include "../../include/hkui/treeHelpers/TextNode.hpp"
 
 #include <algorithm>
+#include <utility>
 
 #include "../../include/hkui/utils/CommonUtils.hpp"
 
@@ -9,9 +10,9 @@ namespace treeHelpers
 
 TextNode::TextNode(const std::string& vertPath, const std::string& fragPath)
     : RectNodeABC()
-    , node{ vertPath, fragPath }
-    , gRenderInstance{ renderHelpers::RenderHelper::get() }
-    , gTextHelperInstance{ textHelpers::TextHelper::get() }
+    , node{vertPath, fragPath}
+    , gRenderInstance{renderHelpers::RenderHelper::get()}
+    , gTextHelperInstance{textHelpers::TextHelper::get()}
 {
     /* Watch out shader's uniforms for changes. Set default if any not used. */
     gMesh.gUniKeeper.watch("uInnerColor", &gMesh.gColor);
@@ -28,19 +29,33 @@ TextNode::TextNode(const std::string& vertPath, const std::string& fragPath)
     node.gMesh.gBox.scale.y = 32;
 }
 
+TextNode::TextNode(const std::string& textVertPath,
+    const std::string& textFragPath,
+    const std::string& baseVertPath,
+    const std::string& baseFragPath)
+    : RectNodeABC(baseVertPath, baseFragPath)
+    , node{textVertPath, textFragPath}
+    , gRenderInstance{renderHelpers::RenderHelper::get()}
+    , gTextHelperInstance{textHelpers::TextHelper::get()}
+{
+    node.gMesh.gUniKeeper.watch("uColor", &node.gMesh.gColor);
+    node.gMesh.gUniKeeper.watch("uCharIndex", &gLetterIdx);
+
+    node.gMesh.gColor = utils::hexToVec4("#f1f1f1");
+
+    node.gMesh.gBox.scale.x = 32;
+    node.gMesh.gBox.scale.y = 32;
+}
+
 bool TextNode::setFont(const std::string& fontPath, const uint32_t fontSize)
 {
     lfPtr = gTextHelperInstance.loadFont(fontPath, fontSize);
     if (!lfPtr) return false;
 
-    /* Texture is not watched and simply set in the renderer instead. Its not hotreloadable for now*/
-    node.gStyle.gTextureId = lfPtr->id;
+    /* Texture is not hotreloadable for now */
+    node.gMesh.gUniKeeper.gTexturePtrs.clear();
+    node.gMesh.gUniKeeper.gTexturePtrs.push_back(std::make_pair("uTextureArrayId", lfPtr->id));
     return true;
-}
-
-void TextNode::setTextColor(const glm::vec4& color)
-{
-    node.gMesh.gColor = color;
 }
 
 void TextNode::setText(const std::string& text)
@@ -58,6 +73,21 @@ void TextNode::setText(const std::string& text)
 void TextNode::alignTextToCenter(const bool align)
 {
     gCenterAlign = align;
+}
+
+void TextNode::alignTextToHorizontal(const Direction dir)
+{
+    gDir = dir;
+}
+
+void TextNode::setTextColor(const glm::vec4& color)
+{
+    node.gMesh.gColor = color;
+}
+
+void TextNode::setTextHorizontalPadding(const int32_t padding)
+{
+    gHorizontalPadding = padding;
 }
 
 void TextNode::computeLines()
@@ -93,10 +123,7 @@ void TextNode::computeLines()
     }
 
     /* Put the line at the end that doesnt fill the parent entirely */
-    if (endIdx < gText.length())
-    {
-        gTextLines.emplace_back(endIdx, gText.length(), currentLength, maxHeight);
-    }
+    if (endIdx < gText.length()) { gTextLines.emplace_back(endIdx, gText.length(), currentLength, maxHeight); }
 }
 
 void TextNode::onRenderDone()
@@ -106,8 +133,8 @@ void TextNode::onRenderDone()
         computeLines();
         gTextIsDirty = false;
     }
-    //TODO: Implement text batching
-    //TODO: This shall be recalculated only on text/font change since text wont change its size magically.
+    // TODO: Implement text batching
+    // TODO: This shall be recalculated only on text/font change since text wont change its size magically.
 
     glDepthMask(GL_FALSE);
 
@@ -122,7 +149,22 @@ void TextNode::onRenderDone()
     for (const auto& line : gTextLines)
     {
         float bringDown = 32 * lineNo++;
-        float x = gMesh.gBox.pos.x + (gMesh.gBox.scale.x - line.length) * 0.5f * gCenterAlign;
+        float x;
+
+        switch (gDir)
+        {
+        case Direction::PreCenter:
+            x = gMesh.gBox.pos.x + gHorizontalPadding;
+            break;
+        case Direction::Center:
+            x = gMesh.gBox.pos.x + (gMesh.gBox.scale.x - line.length) * 0.5f;
+            break;
+        case Direction::PostCenter:
+            x = gMesh.gBox.pos.x + (gMesh.gBox.scale.x - line.length) - gHorizontalPadding;
+            break;
+        }
+
+        // x = gMesh.gBox.pos.x + (gMesh.gBox.scale.x - line.length) * 0.5f * gCenterAlign;
         float y = gMesh.gBox.pos.y + bringDown + (gMesh.gBox.scale.y - heights) * 0.5f;
         for (uint32_t i = line.startIdx; i < line.endIdx; i++)
         {
@@ -141,7 +183,6 @@ void TextNode::onRenderDone()
         }
     }
     glDepthMask(GL_TRUE);
-
 }
 
 void TextNode::onWindowResize()
@@ -159,10 +200,7 @@ void TextNode::onMouseButton()
 
 void TextNode::onItemsDrop()
 {
-    if (gMouseDropCb && gStatePtr)
-    {
-        gMouseDropCb(gStatePtr->dropCount, gStatePtr->droppedPaths);
-    }
+    if (gMouseDropCb && gStatePtr) { gMouseDropCb(gStatePtr->dropCount, gStatePtr->droppedPaths); }
 }
 
 void TextNode::registerOnClick(const MouseClickCb callback)
@@ -174,4 +212,4 @@ void TextNode::registerOnItemsDrop(const MouseDropCb callback)
 {
     gMouseDropCb = callback;
 }
-}
+} // namespace treeHelpers

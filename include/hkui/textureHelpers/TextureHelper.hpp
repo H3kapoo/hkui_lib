@@ -1,7 +1,7 @@
 #pragma once
 
-#include <string>
 #include <map>
+#include <string>
 
 #include "Types.hpp"
 
@@ -34,6 +34,6 @@ private:
     /* In case a lot of objects use the same texture, it's pointless to allocate memory for each SAME texture.
        We can reference the same one, just changing uniforms as needed. */
     std::map<std::string, TextureDataPtr> gTexturePathToGenId;
-
 };
-}
+} // namespace textureHelpers
+  // continue to refactor TOMORROW

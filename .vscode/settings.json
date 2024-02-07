@@ -1,4 +1,7 @@
 {
+    "[cpp]": {
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+    },
     "files.associations": {
         "algorithm": "cpp",
         "cctype": "cpp",

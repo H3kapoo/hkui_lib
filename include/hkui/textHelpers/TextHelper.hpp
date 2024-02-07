@@ -1,8 +1,8 @@
 #pragma once
 
-#include <string>
 #include <map>
 #include <stdio.h>
+#include <string>
 
 #include "Types.hpp"
 
@@ -20,8 +20,25 @@ namespace textHelpers
 class TextHelper
 {
 public:
+    /**
+     * @brief Get class instance.
+     *
+     * @return A reference to the class instance.
+     */
     static TextHelper& get();
 
+    /**
+     * @brief Load font and get a pointer to stored cache location of loaded font.
+     *
+     * Function loads font into memory, if not already in cache, and returns pointer
+     * inside the map where this data is located.
+     *
+     * @note No SDF support as of now. There are some questionable bugs.
+     *
+     * @param fontPath       Path to font to be loaded.
+     * @param fontSize       Size of the font.
+     * @return LoadedFontPtr Pointer to loaded font data.
+     */
     LoadedFontPtr loadFont(const std::string& fontPath, const int32_t fontSize);
 
 private:
@@ -29,7 +46,7 @@ private:
     TextHelper(const TextHelper&) = delete;
     TextHelper& operator=(const TextHelper&) = delete;
 
-    //TODO: Make it hot reloadable and unique
+    // TODO: Make it hot reloadable and unique
     std::map<std::string, LoadedFont> gFontPathToGenFont;
 };
-}
+} // namespace textHelpers

@@ -5,11 +5,10 @@
 namespace treeHelpers
 {
 TreeStruct::TreeStruct()
-    : gId{ generateId() } {}
+    : gId{generateId()}
+{}
 
-TreeStruct::~TreeStruct()
-{
-}
+TreeStruct::~TreeStruct() {}
 
 void TreeStruct::append(RectNodeABC* node)
 {
@@ -17,18 +16,11 @@ void TreeStruct::append(RectNodeABC* node)
     gChildren.push_back(node);
 }
 
-void TreeStruct::remove(const RectNodeABC*)
-{
+void TreeStruct::remove(const RectNodeABC*) {}
 
-}
+void TreeStruct::find(const RectNodeABC*) {}
 
-void TreeStruct::find(const RectNodeABC*)
-{
-}
-
-void TreeStruct::findDeep(const RectNodeABC*)
-{
-}
+void TreeStruct::findDeep(const RectNodeABC*) {}
 
 void TreeStruct::setParent(RectNodeABC* node)
 {
@@ -60,4 +52,4 @@ void TreeStruct::setLevel(const treeNodeLevel level)
     gLevel = level;
 }
 
-}
+} // namespace treeHelpers

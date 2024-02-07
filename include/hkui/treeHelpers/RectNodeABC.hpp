@@ -2,20 +2,20 @@
 
 #include <string>
 
-#include "TreeStruct.hpp"
-#include "Types.hpp"
-#include "FastTreeSort.hpp"
-#include "../../hkui/meshHelpers/RectMesh.hpp"
-#include "../../hkui/meshHelpers/MeshStyle.hpp"
 #include "../../hkui/inputHelpers/Types.hpp"
-#include "../stateHelpers/WindowState.hpp"
+#include "../../hkui/meshHelpers/MeshStyle.hpp"
+#include "../../hkui/meshHelpers/RectMesh.hpp"
 #include "../../hkui/shaderHelpers/ShaderHelper.hpp"
+#include "../stateHelpers/WindowState.hpp"
+#include "FastTreeSort.hpp"
+#include "TreeStruct.hpp"
 
 namespace treeHelpers
 {
-#define CHILD_MAY_IMPLEMENT(x) virtual void x () {}
-#define CHILD_MUST_IMPLEMENT(x) virtual void x () = 0
-#define IMPL_OF_PARENT(x) void x () override
+#define CHILD_MAY_IMPLEMENT(x)                                                                                         \
+    virtual void x() {}
+#define CHILD_MUST_IMPLEMENT(x) virtual void x() = 0
+#define IMPL_OF_PARENT(x) void x() override
 
 /**
  * @brief Abstract base class representing rectangle node.
@@ -147,7 +147,6 @@ public:
      */
     void setStateSource(stateHelpers::WindowState* state);
 
-
     TreeStruct gTreeStruct;
 
 protected:
@@ -160,7 +159,8 @@ protected:
     CHILD_MAY_IMPLEMENT(onWindowResize);
 
     shaderHelpers::ShaderHelper& gShInstance;
-    stateHelpers::WindowState* gStatePtr{ nullptr };
+    stateHelpers::WindowState* gStatePtr{nullptr};
+
 private:
     /**
      * @brief Interanl - just find out who will be the selected node upon mouse being
@@ -170,12 +170,13 @@ private:
     void searchForMouseHover();
     void searchForMouseDropLoc();
 
-    FastTreeSort* gFastTreeSortPtr{ nullptr };
+    FastTreeSort* gFastTreeSortPtr{nullptr};
 
-    bool gIsEventTransparent{ false };
+    bool gIsEventTransparent{false};
+
 public:
     /* Basic mesh */
     meshHelpers::RectMesh gMesh;
-    meshHelpers::MeshStyle gStyle;
+    // meshHelpers::MeshStyle gStyle;
 };
-}
+} // namespace treeHelpers

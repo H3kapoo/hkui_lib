@@ -8,16 +8,15 @@
 namespace textureHelpers
 {
 /**
-* @brief Get class instance.
-*
-* @return A reference to the class instance.
-*/
+ * @brief Get class instance.
+ *
+ * @return A reference to the class instance.
+ */
 TextureHelper& TextureHelper::get()
 {
     static TextureHelper instance;
     return instance;
 }
-
 
 /**
  * @brief Deallocate cached texture pointers at end of life.
@@ -31,7 +30,6 @@ TextureHelper::~TextureHelper()
         delete value;
     }
 }
-
 
 /**
  * @brief Load and retrieve a texture **TextureData** pointer handle from the specified texture path.
@@ -82,7 +80,6 @@ void TextureHelper::reloadFromPath(const std::string& filePath)
     }
 }
 
-
 /**
  * @brief Internal - helper for loading the texture data using stbi and gl.
  *
@@ -118,4 +115,4 @@ TextureData TextureHelper::loadInternal(const std::string& filePath)
     return newData;
 }
 
-}
+} // namespace textureHelpers

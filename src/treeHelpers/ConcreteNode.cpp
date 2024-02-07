@@ -19,18 +19,12 @@ void ConcreteNode::onMouseHover()
 
 void ConcreteNode::onMouseEnter()
 {
-    if (gMouseEnterCb && gStatePtr)
-    {
-        gMouseEnterCb(gStatePtr->mouseX, gStatePtr->mouseY);
-    }
+    if (gMouseEnterCb && gStatePtr) { gMouseEnterCb(gStatePtr->mouseX, gStatePtr->mouseY); }
 }
 
 void ConcreteNode::onMouseExit()
 {
-    if (gMouseExitCb && gStatePtr)
-    {
-        gMouseExitCb(gStatePtr->mouseX, gStatePtr->mouseY);
-    }
+    if (gMouseExitCb && gStatePtr) { gMouseExitCb(gStatePtr->mouseX, gStatePtr->mouseY); }
 }
 
 void ConcreteNode::onMouseButton()
@@ -83,4 +77,4 @@ void ConcreteNode::registerOnMouseEnter(const MouseEnterCb callback)
     gMouseEnterCb = callback;
 }
 
-}
+} // namespace treeHelpers

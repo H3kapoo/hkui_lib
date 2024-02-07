@@ -1,8 +1,8 @@
 #pragma once
 
-#include <vector>
-#include <utility>
 #include <string>
+#include <utility>
+#include <vector>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -32,9 +32,8 @@ public:
      */
     void watch(const std::string& name, glm::vec4* value)
     {
-        gVec4Ptrs.push_back({ name, value });
+        gVec4Ptrs.push_back({name, value});
     }
-
 
     /**
      * @brief Watch the vec3 address of an named uniform.
@@ -44,9 +43,8 @@ public:
      */
     void watch(const std::string& name, glm::vec3* value)
     {
-        gVec3Ptrs.push_back({ name, value });
+        gVec3Ptrs.push_back({name, value});
     }
-
 
     /**
      * @brief Watch the int address of an named uniform.
@@ -56,7 +54,7 @@ public:
      */
     void watch(const std::string& name, uint32_t* value)
     {
-        gIntPtrs.push_back({ name, value });
+        gIntPtrs.push_back({name, value});
     }
 
     /*
@@ -92,7 +90,6 @@ public:
         watch(name, &gDefaultVec3);
     }
 
-
     /**
      * @brief Default zero initialize the named uniform.
      *
@@ -106,7 +103,6 @@ public:
         watch(name, &gDefaultVec4);
     }
 
-
     /* Stored data type can be a typePtr so that changes made to the memory
     address for that variable reflects instantly */
 
@@ -119,10 +115,12 @@ public:
     /* Int ref storage */
     std::vector<std::pair<std::string, uint32_t*>> gIntPtrs;
 
+    /* Texture Int ref storage name, textureId (only TEXTURE UNIT 0 for now)*/
+    std::vector<std::pair<std::string, uint32_t>> gTexturePtrs;
 
 private:
-    glm::vec4 gDefaultVec4{ 0 };
-    glm::vec3 gDefaultVec3{ 0 };
-    uint32_t gDefaultInt{ 0 };
+    glm::vec4 gDefaultVec4{0};
+    glm::vec3 gDefaultVec3{0};
+    uint32_t gDefaultInt{0};
 };
-}
+} // namespace shaderHelpers

@@ -10,7 +10,7 @@ RenderHelper& RenderHelper::get()
 }
 
 RenderHelper::RenderHelper()
-    : gShInstance{ shaderHelpers::ShaderHelper::get() }
+    : gShInstance{shaderHelpers::ShaderHelper::get()}
 {}
 
 void RenderHelper::setProjectionMatrix(const glm::mat4& projMatrix)
@@ -44,19 +44,18 @@ void RenderHelper::renderRectNode(treeHelpers::RectNodeABC& node)
         gShInstance.setInt(uNameValPair.first.c_str(), *uNameValPair.second);
     }
 
-    /* Note: texture uniforms do not need to be 'watched' for now */
-    if (node.gStyle.gTextureId)
+    for (const auto& uNameValPair : uniKeeper.gTexturePtrs)
     {
         glActiveTexture(GL_TEXTURE0);
-        gShInstance.setInt("uTextureArrayId", GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D_ARRAY, node.gStyle.gTextureId);
+        gShInstance.setInt(uNameValPair.first.c_str(), GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D_ARRAY, uNameValPair.second);
     }
 
     glBindVertexArray(node.gMesh.getVaoId());
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
     // unbind texture array
-    glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
+    // glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
 
     /* Notify node and derived class (if impl) that rendering is done. Use it to
        render post-node objects */
@@ -69,4 +68,4 @@ void RenderHelper::clearScreen()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }
 
-}
+} // namespace renderHelpers

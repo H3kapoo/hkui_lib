@@ -3,9 +3,9 @@
 #include <string>
 #include <vector>
 
-#include "ConcreteNode.hpp"
-#include "../textHelpers/TextHelper.hpp"
 #include "../../hkui/renderHelpers/RenderHelper.hpp"
+#include "../textHelpers/TextHelper.hpp"
+#include "ConcreteNode.hpp"
 
 namespace treeHelpers
 {
@@ -13,7 +13,32 @@ namespace treeHelpers
 class TextNode : public RectNodeABC
 {
 public:
+    /**
+     * @brief Simple class retaining details about the style of the mesh
+     *
+     */
+    struct MeshStyle
+    {
+        glm::vec4 gGradColor1{0.0f, 0.0f, 0.0f, 1.0f};
+        glm::vec4 gGradColor2{0.0f, 0.0f, 0.0f, 1.0f};
+        glm::vec4 gBorderColor{0.0f, 0.0f, 0.0f, 1.0f};
+        glm::vec4 gBorderSize{0.0f}; /* Top Bot Left Right order */
+        uint32_t gTextureId{0};
+    };
+
+    enum Direction
+    {
+        PreCenter,
+        Center,
+        PostCenter
+    };
+
     TextNode(const std::string& vertPath, const std::string& fragPath);
+    TextNode(const std::string& textVertPath,
+        const std::string& textFragPath,
+        const std::string& baseVertPath,
+        const std::string& baseFragPath);
+    ~TextNode() = default;
 
     /**
      * @brief Register an on click listener for this node.
@@ -57,15 +82,33 @@ public:
     void alignTextToCenter(const bool align);
 
     /**
+     * @brief Align text horizontally.
+     *
+     * @param dir  Alignment direction to be set.
+     */
+    void alignTextToHorizontal(const Direction dir);
+
+    /**
      * @brief Set text color.
      *
      * @param color  Text color.
      */
     void setTextColor(const glm::vec4& color);
 
-private:
-    void onRenderDone();
+    /**
+     * @brief Adds padding to the text.
+     *
+     * If text is aligned to the left, padding will be put between container start and text start and analogous for the
+     * right alignment. If alignment is set to center, this has no effect
+     *
+     * @param padding  Padding (in pixels) to be set.
+     */
+    void setTextHorizontalPadding(const int32_t padding);
 
+    meshHelpers::MeshStyle gStyle;
+
+private:
+    IMPL_OF_PARENT(onRenderDone);
     IMPL_OF_PARENT(onMouseButton);
     IMPL_OF_PARENT(onItemsDrop);
     IMPL_OF_PARENT(onWindowResize);
@@ -85,25 +128,25 @@ private:
     void computeLongestLine();
 
     /* Concept for text rendering, experimental */
-    std::string gTextVertPath{ "src/assets/shaders/textV.glsl" };
-    std::string gTextFragPath{ "src/assets/shaders/textF.glsl" };
-    ConcreteNode node; //TODO: This shall be replaced by render batcher
+    ConcreteNode node; // TODO: This shall be replaced by render batcher
 
-    MouseClickCb gMouseClickCb{ nullptr };
-    MouseDropCb gMouseDropCb{ nullptr };
+    MouseClickCb gMouseClickCb{nullptr};
+    MouseDropCb gMouseDropCb{nullptr};
 
-    textHelpers::LoadedFontPtr lfPtr{ nullptr };
+    textHelpers::LoadedFontPtr lfPtr{nullptr};
 
     std::string gText;
-    bool gTextIsDirty{ false };
-    uint32_t gLetterIdx{ 0 };
+    bool gTextIsDirty{false};
+    uint32_t gLetterIdx{0};
 
-    bool gCenterAlign{ false };
+    int32_t gHorizontalPadding{0};
+    bool gCenterAlign{false};
+    Direction gDir{Direction::Center};
     std::vector<textHelpers::TextLine> gTextLines;
-    float gLongestLine{ 0.0f };
+    float gLongestLine{0.0f};
 
     renderHelpers::RenderHelper& gRenderInstance;
     textHelpers::TextHelper& gTextHelperInstance;
 };
 
-}
+} // namespace treeHelpers

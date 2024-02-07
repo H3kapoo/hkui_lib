@@ -1,5 +1,4 @@
 #include "../../include/hkui/treeHelpers/FastTreeSort.hpp"
-
 #include "../../include/hkui/treeHelpers/RectNodeABC.hpp"
 
 namespace treeHelpers
@@ -34,4 +33,4 @@ std::vector<RectNodeABC*>& FastTreeSort::getBuffer()
     return gBuffer;
 }
 
-}
+} // namespace treeHelpers

@@ -1,37 +1,19 @@
 #include "../../include/hkui/textHelpers/TextHelper.hpp"
 
 #include <ft2build.h>
-#include FT_FREETYPE_H  
+#include FT_FREETYPE_H
 
 #include "../../include/hkui/vendor/GL/Glew.hpp"
 
 namespace textHelpers
 {
 
-/**
- * @brief Get class instance.
- *
- * @return A reference to the class instance.
- */
 TextHelper& TextHelper::get()
 {
     static TextHelper instance;
     return instance;
 }
 
-
-/**
- * @brief Load font and get a pointer to stored cache location of loaded font.
- *
- * Function loads font into memory, if not already in cache, and returns pointer
- * inside the map where this data is located.
- *
- * @note No SDF support as of now. There are some questionable bugs.
- *
- * @param fontPath       Path to font to be loaded.
- * @param fontSize       Size of the font.
- * @return LoadedFontPtr Pointer to loaded font data.
- */
 LoadedFontPtr TextHelper::loadFont(const std::string& fontPath, const int32_t fontSize)
 {
     /*
@@ -57,7 +39,7 @@ LoadedFontPtr TextHelper::loadFont(const std::string& fontPath, const int32_t fo
     }
 
     std::string fontKey = fontPath + std::to_string(fontSize);
-    //TODO: To avoid one copy of LoadedFont, pointers can be used. For now its ok
+    // TODO: To avoid one copy of LoadedFont, pointers can be used. For now its ok
     LoadedFont font;
 
     const int32_t charLimit = 128;
@@ -70,8 +52,7 @@ LoadedFontPtr TextHelper::loadFont(const std::string& fontPath, const int32_t fo
     glBindTexture(GL_TEXTURE_2D_ARRAY, font.id);
 
     // generate 128 lvls texture
-    glTexImage3D(GL_TEXTURE_2D_ARRAY, 0, GL_R8, fontSize, fontSize,
-        charLimit, 0, GL_RED, GL_UNSIGNED_BYTE, 0);
+    glTexImage3D(GL_TEXTURE_2D_ARRAY, 0, GL_R8, fontSize, fontSize, charLimit, 0, GL_RED, GL_UNSIGNED_BYTE, 0);
 
     // wrapping & mag settings
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -91,17 +72,14 @@ LoadedFontPtr TextHelper::loadFont(const std::string& fontPath, const int32_t fo
 
         // FT_Render_Glyph(slot, FT_RENDER_MODE_SDF); // SDF
 
-        glTexSubImage3D(GL_TEXTURE_2D_ARRAY, 0, 0, 0, i,
-            ftFace->glyph->bitmap.width,
-            ftFace->glyph->bitmap.rows,
-            1, GL_RED, GL_UNSIGNED_BYTE, ftFace->glyph->bitmap.buffer);
+        glTexSubImage3D(GL_TEXTURE_2D_ARRAY, 0, 0, 0, i, ftFace->glyph->bitmap.width, ftFace->glyph->bitmap.rows, 1,
+            GL_RED, GL_UNSIGNED_BYTE, ftFace->glyph->bitmap.buffer);
 
-        ASCIIChar ch = {
-            .charCode = uint32_t(i),
+        ASCIIChar ch = {.charCode = uint32_t(i),
             .hAdvance = ftFace->glyph->advance.x,
-            .size = glm::ivec2(ftFace->glyph->bitmap_left + ftFace->glyph->bitmap.width, ftFace->glyph->bitmap_top + ftFace->glyph->bitmap.rows),
-            .bearing = glm::ivec2(ftFace->glyph->bitmap_left, ftFace->glyph->bitmap_top)
-        };
+            .size = glm::ivec2(ftFace->glyph->bitmap_left + ftFace->glyph->bitmap.width,
+                ftFace->glyph->bitmap_top + ftFace->glyph->bitmap.rows),
+            .bearing = glm::ivec2(ftFace->glyph->bitmap_left, ftFace->glyph->bitmap_top)};
 
         font.data[i] = ch;
     }
@@ -118,4 +96,4 @@ LoadedFontPtr TextHelper::loadFont(const std::string& fontPath, const int32_t fo
     return &gFontPathToGenFont[fontKey];
 }
 
-}
+} // namespace textHelpers

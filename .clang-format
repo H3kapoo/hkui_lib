@@ -1,0 +1,50 @@
+# .clang-format
+
+IndentWidth: 4
+TabWidth: 4
+ColumnLimit: 120
+Language: Cpp
+
+BreakBeforeBraces: Custom
+BraceWrapping: {
+    AfterClass: 'true'
+    AfterControlStatement: 'true'
+    AfterEnum : 'true'
+    AfterFunction : 'true'
+    AfterNamespace : 'true'
+    AfterStruct : 'true'
+    AfterUnion : 'true'
+    BeforeCatch : 'true'
+    BeforeElse : 'true'
+    IndentBraces : 'false'
+    AfterExternBlock : 'true'
+    SplitEmptyFunction : 'false'
+    SplitEmptyRecord : 'false'
+    SplitEmptyNamespace : 'true'
+    BeforeLambdaBody: 'true'
+}
+
+AlignAfterOpenBracket: DontAlign
+BreakConstructorInitializersBeforeComma: true
+ConstructorInitializerAllOnOneLineOrOnePerLine: false
+ConstructorInitializerIndentWidth: 4
+ContinuationIndentWidth: 4
+SortIncludes: true
+IncludeBlocks: Preserve
+PointerAlignment: Left
+KeepEmptyLinesAtEOF: true
+LineEnding: LF
+AccessModifierOffset: -4
+ReflowComments: true
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeInheritanceColon: true
+BreakBeforeBinaryOperators: false
+AlignOperands: Align
+PenaltyBreakAssignment: 120
+PenaltyBreakOpenParenthesis: 120
+# PenaltyBreakBeforeFirstCallParameter: 10000000
+AllowShortBlocksOnASingleLine: true
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+BinPackParameters: false
+LambdaBodyIndentation: Signature
+AllowShortFunctionsOnASingleLine: Empty
